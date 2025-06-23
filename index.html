@@ -236,6 +236,23 @@
 
 
 
+.apropos-bloc {
+    display: flex;
+    flex-direction: column;
+}
+
+.projet-contenu {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.projet-contenu .btn {
+    margin-top: auto;
+}
+
+
+
 
 
 
@@ -275,59 +292,76 @@
     
             <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
     
-                <!-- Projet 1 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
-                    <h3 style="color: #3498db;">📸 PHOTO_ATB – Gestion de photos avioniques</h3>
-                    <p><strong>Catégorie :</strong> Réseau & Web | SAÉ 1.05 / 1.15</p>
-                    <p>J’ai conçu un site web complet permettant de gérer des photographies prises sur un banc de test avionique. J’ai travaillé sur la base de données, la sécurisation des accès, la création d’une interface utilisateur, et la gestion des rôles. Ce projet a été réalisé en collaboration avec Thales.</p>
-                    <p><strong>Compétences développées :</strong> gestion de base de données, développement web sécurisé, gestion de projet en équipe.</p>
-                    <p><a href="rapport15.docx" target="_blank" class="btn">Télécharger le rapport</a></p>
-                </div>
-    
-                <!-- Projet 2 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
-                    <h3 style="color: #2ecc71;">📡 Étude d’un câble coaxial</h3>
-                    <p><strong>Catégorie :</strong> Télécommunication | SAÉ 1.03</p>
-                    <p>Ce projet consistait à étudier les performances d’un câble coaxial via des mesures physiques et simulations sur Octave. J’y ai analysé les atténuations et les retards de propagation d’un signal pour mieux comprendre les phénomènes liés à la transmission analogique.</p>
-                    <p><strong>Compétences développées :</strong> mesures électroniques, analyse de signaux, utilisation d'outils de simulation.</p>
-                    <p><a href="Zoubir_Rayan-SAE13-Rapport.pdf" target="_blank" class="btn">Télécharger le rapport</a></p>
-                </div>
-    
-                <!-- Projet 3 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
-                    <h3 style="color: #e67e22;">🎓 Sensibilisation à l’e-réputation</h3>
-                    <p><strong>Catégorie :</strong> Communication | SAÉ 1.04</p>
-                    <p>Nous avons organisé une session de sensibilisation auprès de collégiens sur les risques liés à la publication de contenus en ligne. J’ai conçu le support de présentation, animé les échanges, et utilisé des outils interactifs comme Kahoot pour favoriser l’implication du public.</p>
-                    <p><strong>Compétences développées :</strong> communication orale, pédagogie, sensibilisation au numérique.</p>
-                    <p><a href="E-reputation.pdf" target="_blank" class="btn">Télécharger le diaporama</a></p>
-                </div>
-    
-                <!-- Projet 4 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
-                    <h3 style="color: #9b59b6;">🌐 Conception d’un réseau d’entreprise sécurisé</h3>
-                    <p><strong>Catégorie :</strong> Réseau | SAÉ 2.01</p>
-                    <p>J’ai conçu un réseau d’entreprise complet en utilisant Cisco Packet Tracer. Le projet intégrait des VLANs, un MLS, des serveurs DHCP et DNS, une DMZ avec des serveurs web, du NAT et un pare-feu ASA avec des règles d’accès. Ce fichier simule le réseau final configuré.</p>
-                    <p><strong>Compétences développées :</strong> configuration réseau, sécurité, segmentation, simulation.</p>
-                    <p><a href="sae21.pkt" target="_blank" class="btn">Télécharger le fichier Packet Tracer</a></p>
-                </div>
-    
-                <!-- Projet 5 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
-                    <h3 style="color: #1abc9c;">💼 Portfolio personnel en ligne</h3>
-                    <p><strong>Catégorie :</strong> Développement Web | SAÉ 2.05</p>
-                    <p>Ce projet consistait à concevoir un portfolio personnel en HTML/CSS permettant de valoriser mes projets et mes compétences. Le site est responsive, animé, cohérent visuellement, et publié sur GitHub Pages.</p>
-                    <p><strong>Compétences développées :</strong> design web, structuration HTML, ergonomie, hébergement.</p>
-                    <p><a href="https://rayanzoubir.github.io/Portfolio/" target="_blank" class="btn">Voir le portfolio en ligne</a></p>
-                </div>
-    
-                <!-- Projet 6 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
-                    <h3 style="color: #f39c12;">🔐 PHOTO_ATB – Sécurisation du système web</h3>
-                    <p><strong>Catégorie :</strong> Cybersécurité | SAÉ 2.04</p>
-                    <p>J’ai renforcé la sécurité du site PHOTO_ATB avec une vérification des rôles utilisateurs, la gestion des permissions, l'ajout de protections CSRF, la journalisation des actions sensibles et la validation des formulaires côté serveur.</p>
-                    <p><strong>Compétences développées :</strong> sécurité web, logique de rôles, audit d’actions, validation serveur.</p>
-                    <p><a href="rapport_securite_PHOTO_ATB.pdf" target="_blank" class="btn">Télécharger le rapport</a></p>
-                </div>
+              <!-- Dans la section "Projets", remplace chaque .apropos-bloc par ceci : -->
+
+<!-- Exemple projet 1 -->
+<div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+  <div class="projet-contenu">
+    <h3 style="color: #3498db;">📸 PHOTO_ATB – Gestion de photos avioniques</h3>
+    <p><strong>Catégorie :</strong> Réseau & Web | SAÉ 1.05 / 1.15</p>
+    <p>J’ai conçu un site web complet permettant de gérer des photographies prises sur un banc de test avionique. J’ai travaillé sur la base de données, la sécurisation des accès, la création d’une interface utilisateur, et la gestion des rôles. Ce projet a été réalisé en collaboration avec Thales.</p>
+    <p><strong>Compétences développées :</strong> gestion de base de données, développement web sécurisé, gestion de projet en équipe.</p>
+    <p><a href="rapport15.docx" target="_blank" class="btn">Télécharger le rapport</a></p>
+  </div>
+</div>
+
+<!-- Exemple projet 2 -->
+<div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+  <div class="projet-contenu">
+    <h3 style="color: #2ecc71;">📡 Étude d’un câble coaxial</h3>
+    <p><strong>Catégorie :</strong> Télécommunication | SAÉ 1.03</p>
+    <p>Ce projet consistait à étudier les performances d’un câble coaxial via des mesures physiques et simulations sur Octave. J’y ai analysé les atténuations et les retards de propagation d’un signal pour mieux comprendre les phénomènes liés à la transmission analogique.</p>
+    <p><strong>Compétences développées :</strong> mesures électroniques, analyse de signaux, utilisation d'outils de simulation.</p>
+    <p><a href="Zoubir_Rayan-SAE13-Rapport.pdf" target="_blank" class="btn">Télécharger le rapport</a></p>
+  </div>
+</div>
+
+<!-- ... Fais la même chose pour les projets 3 à 6 ... -->
+
+<!-- Exemple projet 3 -->
+<div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+  <div class="projet-contenu">
+    <h3 style="color: #e67e22;">🎓 Sensibilisation à l’e-réputation</h3>
+    <p><strong>Catégorie :</strong> Communication | SAÉ 1.04</p>
+    <p>Nous avons organisé une session de sensibilisation auprès de collégiens sur les risques liés à la publication de contenus en ligne. J’ai conçu le support de présentation, animé les échanges, et utilisé des outils interactifs comme Kahoot pour favoriser l’implication du public.</p>
+    <p><strong>Compétences développées :</strong> communication orale, pédagogie, sensibilisation au numérique.</p>
+    <p><a href="E-reputation.pdf" target="_blank" class="btn">Télécharger le diaporama</a></p>
+  </div>
+</div>
+
+<!-- Exemple projet 4 -->
+<div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+  <div class="projet-contenu">
+    <h3 style="color: #9b59b6;">🌐 Conception d’un réseau d’entreprise sécurisé</h3>
+    <p><strong>Catégorie :</strong> Réseau | SAÉ 2.01</p>
+    <p>J’ai conçu un réseau d’entreprise complet en utilisant Cisco Packet Tracer. Le projet intégrait des VLANs, un MLS, des serveurs DHCP et DNS, une DMZ avec des serveurs web, du NAT et un pare-feu ASA avec des règles d’accès. Ce fichier simule le réseau final configuré.</p>
+    <p><strong>Compétences développées :</strong> configuration réseau, sécurité, segmentation, simulation.</p>
+    <p><a href="sae21.pkt" target="_blank" class="btn">Télécharger le fichier Packet Tracer</a></p>
+  </div>
+</div>
+
+<!-- Exemple projet 5 -->
+<div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+  <div class="projet-contenu">
+    <h3 style="color: #1abc9c;">💼 Portfolio personnel en ligne</h3>
+    <p><strong>Catégorie :</strong> Développement Web | SAÉ 2.05</p>
+    <p>Ce projet consistait à concevoir un portfolio personnel en HTML/CSS permettant de valoriser mes projets et mes compétences. Le site est responsive, animé, cohérent visuellement, et publié sur GitHub Pages.</p>
+    <p><strong>Compétences développées :</strong> design web, structuration HTML, ergonomie, hébergement.</p>
+    <p><a href="https://rayanzoubir.github.io/Portfolio/" target="_blank" class="btn">Voir le portfolio en ligne</a></p>
+  </div>
+</div>
+
+<!-- Exemple projet 6 -->
+<div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+  <div class="projet-contenu">
+    <h3 style="color: #f39c12;">🔐 PHOTO_ATB – Sécurisation du système web</h3>
+    <p><strong>Catégorie :</strong> Cybersécurité | SAÉ 2.04</p>
+    <p>J’ai renforcé la sécurité du site PHOTO_ATB avec une vérification des rôles utilisateurs, la gestion des permissions, l'ajout de protections CSRF, la journalisation des actions sensibles et la validation des formulaires côté serveur.</p>
+    <p><strong>Compétences développées :</strong> sécurité web, logique de rôles, audit d’actions, validation serveur.</p>
+    <p><a href="rapport_securite_PHOTO_ATB.pdf" target="_blank" class="btn">Télécharger le rapport</a></p>
+  </div>
+</div>
+
     
             </div>
         </div>
