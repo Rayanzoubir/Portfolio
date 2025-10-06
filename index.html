@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="fr">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,6 +10,11 @@
             box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        /* NOUVEAU : Correction du débordement horizontal */
+        html, body {
+            overflow-x: hidden;
         }
 
         body {
@@ -32,7 +36,7 @@
             gap: 20px;
             position: sticky;
             top: 0;
-            z-index: 100;
+            z-index: 1000; /* Augmenté pour être au-dessus de tout sauf les modales */
             box-shadow: 0 2px 10px #888;
         }
 
@@ -81,7 +85,6 @@
             border: 2px solid #fff;
             letter-spacing: 1px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            background-color: #000;
             color: #fff;
             padding: 12px 20px;
             border-radius: 5px;
@@ -94,11 +97,9 @@
         }
 
         .btn:hover {
-            transform: scale(1.05);
+            transform: scale(1.05) translateY(-3px);
             background: #333;
             box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
-            transform: translateY(-3px);
-            background-color: #222;
         }
 
         .manga-style {
@@ -110,7 +111,6 @@
             justify-content: center;
             align-items: center;
             margin-bottom: 20px;
-            animation: fadeIn 1.5s ease;
         }
 
         .photo-container img {
@@ -137,32 +137,17 @@
             margin: auto;
             text-align: center;
             box-shadow: 0 0 25px rgba(0, 0, 0, 0.9);
-            animation: fadeIn 1.2s ease;
         }
 
         .accueil-wrapper h2 {
             font-size: 2.5em;
             margin-bottom: 20px;
-            animation: fadeIn 1.4s ease;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .accueil-wrapper h2:hover {
-            transform: translateY(-4px);
-            color: #ffffff;
         }
 
         .accueil-wrapper p {
             font-size: 1.2em;
             max-width: 720px;
             margin: 0 auto 20px auto;
-            animation: fadeIn 1.6s ease;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-
-        .accueil-wrapper p:hover {
-            transform: translateY(-3px);
-            color: #dddddd;
         }
 
         .apropos-bloc {
@@ -185,6 +170,27 @@
             cursor: pointer;
         }
 
+        .slogan {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fffb;
+            font-style: italic;
+        }
+
+        /* NOUVEAU : Style pour les compétences cliquables */
+        .clickable-skill {
+            cursor: pointer;
+            text-decoration: none;
+            border-bottom: 1px dotted #a0cff7;
+            transition: color 0.3s, border-bottom-color 0.3s;
+        }
+        .clickable-skill:hover {
+            color: #3498db;
+            border-bottom-color: #3498db;
+        }
+
         footer {
             background-color: rgba(0, 0, 0, 0.85);
             color: #fff;
@@ -192,50 +198,12 @@
             padding: 10px;
             margin-top: auto;
         }
-        .apropos-bloc h3:hover {
-            transform: scale(1.05);
-            color: inherit;
-        }
 
-        .slogan {
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            display: block;
-            text-align: center;
-            font-size: 1.1em;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #fffb;
-            font-style: italic;
-            animation: fadeIn 1s ease-in-out;
-        }
-
-        .slogan:hover {
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(255,255,255,0.6);
-            transform: scale(1.02);
-            transition: all 0.3s ease-in-out;
-        }
-
-        .slogan::after {
-            content: "";
-            display: block;
-            width: 100px;
-            height: 2px;
-            background-color: #fff;
-            margin: 10px auto 0;
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.3s ease;
-        }
-
-        .slogan:hover::after {
-            transform: scaleX(1);
-        }
-
+        /* --- STYLES POUR LES FENÊTRES MODALES --- */
         .modal {
-            display: none;
+            display: none; 
             position: fixed; 
-            z-index: 200; 
+            z-index: 2000; 
             left: 0;
             top: 0;
             width: 100%;
@@ -259,6 +227,38 @@
             animation: slideIn 0.5s ease-out;
             text-align: left;
         }
+        
+        #skillModal .modal-content {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .skill-project-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .skill-project-card:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateX(5px);
+        }
+
+        .skill-project-card h4 {
+            margin-bottom: 5px;
+            color: #3498db;
+        }
+
+        .skill-project-card p {
+            font-size: 0.9em;
+            margin: 0;
+            color: #ccc;
+        }
+
 
         @keyframes slideIn {
             from {transform: translateY(-50px); opacity: 0;}
@@ -308,7 +308,7 @@
 <div class="container">
 
     <section id="accueil" class="active">
-        <div class="accueil-wrapper" style="max-width: 800px; text-align: center;">
+        <div class="accueil-wrapper">
             <div class="photo-container">
                 <img src="pdp.png" alt="Photo de Zoubir Rayan">
             </div>
@@ -320,13 +320,13 @@
     </section>
 
     <section id="projets">
-        <div class="accueil-wrapper" style="max-width: 1350px; text-align: center;">
+        <div class="accueil-wrapper" style="max-width: 1350px;">
             <h2>Mes Projets</h2>
             <p>Durant ma formation, j'ai mené plusieurs projets concrets. Cliquez sur un projet pour voir plus de détails.</p>
         
             <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 20px;">
         
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;" 
+                <div id="projet1" class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;" 
                      onclick="openModal(this)"
                      data-title="📸 PHOTO_ATB – Gestion de photos avioniques"
                      data-details="Ce projet, réalisé en partenariat avec Thales, consistait à développer un système complet pour l'archivage photographique de bancs de tests avioniques. L'objectif était d'assurer une traçabilité visuelle de la configuration du matériel avant chaque exécution de test. La solution prend la forme d'un site web hébergé localement sur un Raspberry Pi, permettant une capture de photo manuelle ou automatique. Le système intègre une gestion avancée des utilisateurs avec plusieurs rôles (Opérateur, Administrateur, Super Administrateur), chacun disposant de droits spécifiques. J'ai contribué à la conception du schéma de communication entre les composants matériels (Raspberry Pi, Pico) et l'interface web, ainsi qu'à la définition des exigences fonctionnelles et techniques."
@@ -335,22 +335,22 @@
                      data-link-text="Télécharger le rapport">
                     <h3 style="color: #3498db;">📸 PHOTO_ATB – Gestion de photos avioniques</h3>
                     <p><strong>Catégorie :</strong> Réseau & Web | SAÉ 1.05 / 1.15</p>
-                    <p>J’ai conçu un site web complet permettant de gérer des photographies prises sur un banc de test avionique. J’ai travaillé sur la base de données, la sécurisation des accès, la création d’une interface utilisateur, et la gestion des rôles. Ce projet a été réalisé en collaboration avec Thales.</p>
+                    <p>Conception d'un site web avec gestion des utilisateurs et base de données pour archiver des photos d'un banc de test avionique (en collaboration avec Thales).</p>
                 </div>
         
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                <div id="projet2" class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
                      onclick="openModal(this)"
                      data-title="📡 Étude d’un câble coaxial"
                      data-details="Ce projet avait pour but d'étudier de manière approfondie les caractéristiques de transmission d'un câble coaxial. La démarche s'est déroulée en deux temps. D'abord, une phase pratique en laboratoire où, à l'aide d'un oscilloscope et d'un générateur de fonctions, nous avons effectué des mesures pour quantifier l'atténuation du signal en fonction de la fréquence et mesurer le retard de propagation. Ensuite, une phase de modélisation théorique sous Octave (un équivalent de MATLAB) où nous avons appliqué la formule théorique de l'atténuation. L'objectif final était de comparer les courbes obtenues par la mesure et par la simulation pour valider notre modèle et comprendre les écarts éventuels, illustrant la relation entre théorie et pratique."
-                     data-competences="Mesures physiques (oscilloscope, GBF), Analyse de signaux (atténuation, retard de propagation), Simulation et modélisation (Octave/MATLAB), Traitement et visualisation de données, Comparaison de résultats théoriques et pratiques, Rédaction de rapport technique."
+                     data-competences="Mesures physiques (oscilloscope, générateur de fonctions), Analyse de signaux (atténuation, retard de propagation), Simulation et modélisation (Octave/MATLAB), Traitement et visualisation de données, Comparaison de résultats théoriques et pratiques, Rédaction de rapport technique."
                      data-link="Zoubir_Rayan-SAE13-Rapport.pdf"
                      data-link-text="Télécharger le rapport d'étude">
                     <h3 style="color: #2ecc71;">📡 Étude d’un câble coaxial</h3>
                     <p><strong>Catégorie :</strong> Télécommunication | SAÉ 1.03</p>
-                    <p>Ce projet consistait à étudier les performances d’un câble coaxial via des mesures physiques et simulations sur Octave. J’y ai analysé les atténuations et les retards de propagation d’un signal pour mieux comprendre les phénomènes liés à la transmission analogique.</p>
+                    <p>Analyse des performances d'un câble coaxial via des mesures physiques en laboratoire et des simulations sur Octave pour étudier l'atténuation et la propagation du signal.</p>
                 </div>
         
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                <div id="projet3" class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
                      onclick="openModal(this)"
                      data-title="🎓 Sensibilisation à l’e-réputation"
                      data-details="Dans le cadre de cette SAÉ axée sur la communication, nous avons conçu et animé une session de sensibilisation sur l'e-réputation destinée à des collégiens. Le projet consistait à créer une présentation pédagogique pour expliquer les risques et les bonnes pratiques liés à l'identité numérique. Nous avons structuré l'intervention autour de scénarios concrets (partage de photos sans consentement, cookies, fuite de données) pour illustrer nos propos. Pour maximiser l'engagement du jeune public, nous avons intégré un quiz interactif via l'outil Kahoot, permettant de rythmer la session et de valider la compréhension des messages clés de manière ludique."
@@ -359,10 +359,10 @@
                      data-link-text="Télécharger le diaporama">
                     <h3 style="color: #e67e22;">🎓 Sensibilisation à l’e-réputation</h3>
                     <p><strong>Catégorie :</strong> Communication | SAÉ 1.04</p>
-                    <p>Nous avons organisé une session de sensibilisation auprès de collégiens sur les risques liés à la publication de contenus en ligne. J’ai conçu le support de présentation, animé les échanges, et utilisé des outils interactifs comme Kahoot pour favoriser l’implication du public.</p>
+                    <p>Organisation d'une session de sensibilisation pour des collégiens sur les risques et bonnes pratiques liés à la publication de contenus en ligne.</p>
                 </div>
         
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                <div id="projet4" class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
                      onclick="openModal(this)"
                      data-title="🌐 Conception d’un réseau d’entreprise sécurisé"
                      data-details="Ce projet consistait à bâtir de A à Z l'infrastructure réseau simulée d'une PME à l'aide de l'outil Cisco Packet Tracer. L'architecture a été conçue autour de la sécurité et de la segmentation. Plusieurs départements (ex: Ventes, RH) ont été isolés dans des VLANs distincts pour limiter la propagation des menaces et optimiser le trafic. Les services essentiels comme le DHCP (pour l'attribution automatique d'adresses IP) et le DNS (pour la résolution de noms) ont été configurés sur des serveurs dédiés. Un point central du projet fut la mise en place d'une Zone Démilitarisée (DMZ) pour héberger le serveur web de l'entreprise, le protégeant du réseau interne. La sécurité périmétrique a été assurée par un pare-feu Cisco ASA, sur lequel des listes de contrôle d'accès (ACLs) précises ont été définies pour filtrer le trafic entrant et sortant."
@@ -371,10 +371,10 @@
                      data-link-text="Télécharger le fichier Packet Tracer">
                     <h3 style="color: #9b59b6;">🌐 Conception d’un réseau d’entreprise sécurisé</h3>
                     <p><strong>Catégorie :</strong> Réseau | SAÉ 2.01</p>
-                    <p>J’ai conçu un réseau d’entreprise complet en utilisant Cisco Packet Tracer. Le projet intégrait des VLANs, un MLS, des serveurs DHCP et DNS, une DMZ avec des serveurs web, du NAT et un pare-feu ASA avec des règles d’accès. Ce fichier simule le réseau final configuré.</p>
+                    <p>Conception d'un réseau d'entreprise sur Cisco Packet Tracer intégrant VLANs, DMZ, serveurs, NAT et un pare-feu pour une sécurité optimale.</p>
                 </div>
 
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                <div id="projet5" class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
                      onclick="openModal(this)"
                      data-title="💼 Portfolio personnel en ligne"
                      data-details="Ce portfolio est lui-même un projet de développement web. L'objectif était de créer une vitrine professionnelle en utilisant uniquement les technologies fondamentales du web : HTML pour la structure sémantique, CSS pour la mise en page et le design, et JavaScript natif pour l'interactivité. Un accent particulier a été mis sur la création d'un design 'responsive', qui s'adapte à tous les formats d'écrans (ordinateurs, tablettes, mobiles). L'interactivité, comme la navigation entre les sections sans rechargement de page et l'apparition des fenêtres modales pour les projets, a été gérée en JavaScript. Le site est versionné avec Git et déployé via GitHub Pages, ce qui permet une mise à jour continue et un hébergement simple."
@@ -383,10 +383,10 @@
                      data-link-text="Voir le portfolio en ligne">
                     <h3 style="color: #1abc9c;">💼 Portfolio personnel en ligne</h3>
                     <p><strong>Catégorie :</strong> Développement Web | SAÉ 2.05</p>
-                    <p>Ce projet consistait à concevoir un portfolio personnel en HTML/CSS permettant de valoriser mes projets et mes compétences. Le site est responsive, animé, cohérent visuellement, et publié sur GitHub Pages.</p>
+                    <p>Conception et développement d'un portfolio personnel responsive en HTML, CSS et JavaScript, hébergé sur GitHub Pages pour valoriser projets et compétences.</p>
                 </div>
 
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                <div id="projet6" class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
                      onclick="openModal(this)"
                      data-title="🔐 PHOTO_ATB – Sécurisation du système web"
                      data-details="Cette seconde phase du projet PHOTO_ATB était entièrement dédiée au renforcement de la sécurité de l'application web. J'ai été en charge de développer et d'implémenter plusieurs mécanismes de défense. Le contrôle d'accès a été renforcé en vérifiant côté serveur les permissions de l'utilisateur pour chaque action critique. Un système de journalisation (logs) complet a été mis en place, enregistrant dans la base de données chaque tentative de connexion (réussie ou échouée), chaque création d'utilisateur ou encore chaque suppression de photo. J'ai aussi développé le système de blocage de compte après 3 tentatives infructueuses et la politique de mots de passe (complexité, non-similitude avec l'identifiant), avec des paramètres configurables par l'administrateur depuis le back-office. Enfin, le stockage des mots de passe a été sécurisé via hachage."
@@ -395,7 +395,7 @@
                      data-link-text="Télécharger le rapport de sécurité">
                     <h3 style="color: #f39c12;">🔐 PHOTO_ATB – Sécurisation du système web</h3>
                     <p><strong>Catégorie :</strong> Cybersécurité | SAÉ 2.04</p>
-                    <p>J’ai renforcé la sécurité du site PHOTO_ATB avec une vérification des rôles utilisateurs, la gestion des permissions, la journalisation des actions sensibles et la validation des formulaires côté serveur.</p>
+                    <p>Renforcement de la sécurité du site PHOTO_ATB : vérification des rôles, gestion des permissions, journalisation des actions et validation des formulaires côté serveur.</p>
                 </div>
         
             </div>
@@ -403,43 +403,47 @@
     </section>
     
     <section id="competences">
-        <div class="accueil-wrapper" style="max-width: 1350px; text-align: center;">
+        <div class="accueil-wrapper" style="max-width: 1350px;">
             <h2>Mes Compétences</h2>
-            <p>Au fil de ma formation, j’ai acquis un ensemble de compétences techniques solides dans les domaines clés des réseaux et télécommunications.</p>
+            <p>Cliquez sur une compétence soulignée pour découvrir les projets associés.</p>
             <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 30px; text-align: left;">
+                
                 <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
                     <h3 style="color: #2980b9;">🌐 Réseaux</h3>
                     <ul>
-                        <li>Configuration de VLAN, DHCP, NAT, ACL</li>
-                        <li>Conception et simulation de réseaux avec Cisco Packet Tracer</li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Configuration VLAN, DHCP, NAT, ACL" data-project-ids="projet4">Configuration de VLAN, DHCP, NAT, ACL</span></li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Cisco Packet Tracer" data-project-ids="projet4">Conception et simulation avec Cisco Packet Tracer</span></li>
                         <li>Utilisation de Wireshark pour l'analyse de trames</li>
-                        <li>Paramétrage de pare-feux (ASA), DMZ et routage dynamique</li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Pare-feu (ASA) et DMZ" data-project-ids="projet4">Paramétrage de pare-feux (ASA), DMZ et routage</span></li>
                     </ul>
                 </div>
+
                 <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
                     <h3 style="color: #27ae60;">💻 Programmation</h3>
                     <ul>
-                        <li>Langages : Python, C, SQL, HTML/CSS, JavaScript</li>
+                        <li>Langages : <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Python" data-project-ids="projet1,projet6">Python</span>, C, <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="SQL" data-project-ids="projet1,projet6">SQL</span>, <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="HTML/CSS/JS" data-project-ids="projet1,projet5,projet6">HTML/CSS/JS</span></li>
                         <li>Développement de sites web statiques et dynamiques</li>
                         <li>Scripts d'automatisation sur Linux en Bash</li>
-                        <li>Utilisation de Visual Studio Code et Git</li>
+                        <li>Utilisation de Visual Studio Code et <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Git" data-project-ids="projet5">Git</span></li>
                     </ul>
                 </div>
+
                 <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
                     <h3 style="color: #e67e22;">📡 Télécommunications</h3>
                     <ul>
                         <li>Étude et manipulation de signaux analogiques et numériques</li>
-                        <li>Utilisation de Matlab/Octave pour la simulation de signaux</li>
-                        <li>Compréhension des circuits et composants (TP électroniques)</li>
-                        <li>Analyse du comportement de transmission (ex : câble coaxial)</li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Matlab/Octave" data-project-ids="projet2">Utilisation de Matlab/Octave pour la simulation</span></li>
+                        <li>Compréhension des circuits et composants électroniques</li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Analyse de transmission" data-project-ids="projet2">Analyse du comportement de transmission (câble coaxial)</span></li>
                     </ul>
                 </div>
+
             </div>
         </div>
     </section>
 
     <section id="apropos">
-        <div class="accueil-wrapper" style="max-width: 1400px; text-align: center;">
+        <div class="accueil-wrapper" style="max-width: 1400px;">
             <h2>À propos de moi</h2>
             <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 20px auto 0; text-align: left;">
                 <div class="apropos-bloc" style="flex: 1 1 300px;">
@@ -459,7 +463,7 @@
     </section>
 
     <section id="contact">
-        <div class="accueil-wrapper" style="text-align: center;">
+        <div class="accueil-wrapper">
             <h2>Contact</h2>
             <p style="margin-top: 20px;">
                 <a href="mailto:rayanzoubir6gmail.com" style="color: #fff; text-decoration: none; font-size: 1.1em;">
@@ -490,8 +494,17 @@
     </div>
 </div>
 
+<div id="skillModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeSkillModal()">&times;</span>
+        <h3 id="skill-modal-title"></h3>
+        <div id="skill-modal-projects"></div>
+    </div>
+</div>
+
+
 <script>
-    // Gère l'affichage des sections
+    // --- Gestion de l'affichage des sections ---
     function showSection(id) {
         document.querySelectorAll('section').forEach(sec => {
             sec.classList.remove('active');
@@ -502,28 +515,76 @@
         }
     }
 
-    // Logique pour la fenêtre modale
-    const modal = document.getElementById('projectModal');
+    // --- Logique pour la modale des PROJETS ---
+    const projectModal = document.getElementById('projectModal');
 
     function openModal(element) {
-        document.getElementById('modal-title').innerText = element.getAttribute('data-title');
-        document.getElementById('modal-details').innerText = element.getAttribute('data-details');
-        document.getElementById('modal-competences').innerText = element.getAttribute('data-competences');
+        // Si l'élément passé n'a pas de data-title, on cherche son parent .apropos-bloc
+        const projectElement = element.hasAttribute('data-title') ? element : element.closest('.apropos-bloc');
+        if (!projectElement) return;
+
+        document.getElementById('modal-title').innerText = projectElement.getAttribute('data-title');
+        document.getElementById('modal-details').innerText = projectElement.getAttribute('data-details');
+        document.getElementById('modal-competences').innerText = projectElement.getAttribute('data-competences');
         
         const modalLink = document.getElementById('modal-link');
-        modalLink.href = element.getAttribute('data-link');
-        modalLink.innerText = element.getAttribute('data-link-text');
+        modalLink.href = projectElement.getAttribute('data-link');
+        modalLink.innerText = projectElement.getAttribute('data-link-text');
 
-        modal.style.display = "block";
+        projectModal.style.display = "block";
     }
 
     function closeModal() {
-        modal.style.display = "none";
+        projectModal.style.display = "none";
     }
 
+    // --- NOUVEAU : Logique pour la modale des COMPÉTENCES ---
+    const skillModal = document.getElementById('skillModal');
+
+    function openSkillModal(skillElement) {
+        const skillTitle = skillElement.getAttribute('data-skill-title');
+        const projectIds = skillElement.getAttribute('data-project-ids').split(',');
+        
+        const modalTitle = document.getElementById('skill-modal-title');
+        const modalProjectsContainer = document.getElementById('skill-modal-projects');
+
+        modalTitle.innerText = "Projets utilisant : " + skillTitle;
+        modalProjectsContainer.innerHTML = ''; // Vider le contenu précédent
+
+        projectIds.forEach(id => {
+            const projectElement = document.getElementById(id.trim());
+            if (projectElement) {
+                const title = projectElement.querySelector('h3').innerText;
+                const category = projectElement.querySelector('p > strong').nextSibling.textContent.trim();
+
+                const card = document.createElement('div');
+                card.className = 'skill-project-card';
+                // Important : on passe l'ID du projet pour que la fonction openModal puisse le retrouver
+                card.setAttribute('onclick', `openModal(document.getElementById('${id.trim()}'))`);
+                
+                card.innerHTML = `
+                    <h4>${title}</h4>
+                    <p><strong>Catégorie :</strong>${category}</p>
+                `;
+                modalProjectsContainer.appendChild(card);
+            }
+        });
+
+        skillModal.style.display = 'block';
+    }
+
+    function closeSkillModal() {
+        skillModal.style.display = "none";
+    }
+
+
+    // --- Gestion de la fermeture des modales au clic extérieur ---
     window.onclick = function(event) {
-        if (event.target == modal) {
+        if (event.target == projectModal) {
             closeModal();
+        }
+        if (event.target == skillModal) {
+            closeSkillModal();
         }
     }
 
