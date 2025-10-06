@@ -12,7 +12,7 @@
             padding: 0;
         }
 
-        /* NOUVEAU : Correction du débordement horizontal */
+        /* Correction du débordement horizontal pour éviter le défilement latéral non désiré */
         html, body {
             overflow-x: hidden;
         }
@@ -36,7 +36,7 @@
             gap: 20px;
             position: sticky;
             top: 0;
-            z-index: 1000; /* Augmenté pour être au-dessus de tout sauf les modales */
+            z-index: 1000;
             box-shadow: 0 2px 10px #888;
         }
 
@@ -179,16 +179,25 @@
             font-style: italic;
         }
 
-        /* NOUVEAU : Style pour les compétences cliquables */
+        /* NOUVEAU : Style pour les compétences cliquables en forme de badges */
         .clickable-skill {
+            display: inline-block;
+            background-color: rgba(52, 152, 219, 0.2);
+            color: #e0e0e0;
+            padding: 4px 10px;
+            margin: 2px 0;
+            border-radius: 12px;
+            font-size: 0.9em;
             cursor: pointer;
-            text-decoration: none;
-            border-bottom: 1px dotted #a0cff7;
-            transition: color 0.3s, border-bottom-color 0.3s;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(52, 152, 219, 0.3);
         }
         .clickable-skill:hover {
-            color: #3498db;
-            border-bottom-color: #3498db;
+            background-color: rgba(52, 152, 219, 0.5);
+            color: #ffffff;
+            transform: translateY(-2px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            border-color: rgba(52, 152, 219, 0.6);
         }
 
         footer {
@@ -209,7 +218,7 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.7);
+            background-color: rgba(0,0,0,0.8);
             animation: fadeIn 0.5s;
         }
 
@@ -258,7 +267,6 @@
             margin: 0;
             color: #ccc;
         }
-
 
         @keyframes slideIn {
             from {transform: translateY(-50px); opacity: 0;}
@@ -405,16 +413,16 @@
     <section id="competences">
         <div class="accueil-wrapper" style="max-width: 1350px;">
             <h2>Mes Compétences</h2>
-            <p>Cliquez sur une compétence soulignée pour découvrir les projets associés.</p>
+            <p>Cliquez sur une compétence pour découvrir les projets associés.</p>
             <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 30px; text-align: left;">
                 
                 <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
                     <h3 style="color: #2980b9;">🌐 Réseaux</h3>
                     <ul>
-                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Configuration VLAN, DHCP, NAT, ACL" data-project-ids="projet4">Configuration de VLAN, DHCP, NAT, ACL</span></li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Config. VLAN, DHCP, NAT, ACL" data-project-ids="projet4">Configuration de VLAN, DHCP, NAT, ACL</span></li>
                         <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Cisco Packet Tracer" data-project-ids="projet4">Conception et simulation avec Cisco Packet Tracer</span></li>
                         <li>Utilisation de Wireshark pour l'analyse de trames</li>
-                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Pare-feu (ASA) et DMZ" data-project-ids="projet4">Paramétrage de pare-feux (ASA), DMZ et routage</span></li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Pare-feu (ASA) et DMZ" data-project-ids="projet4">Paramétrage de pare-feux (ASA) et DMZ</span></li>
                     </ul>
                 </div>
 
@@ -424,17 +432,17 @@
                         <li>Langages : <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Python" data-project-ids="projet1,projet6">Python</span>, C, <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="SQL" data-project-ids="projet1,projet6">SQL</span>, <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="HTML/CSS/JS" data-project-ids="projet1,projet5,projet6">HTML/CSS/JS</span></li>
                         <li>Développement de sites web statiques et dynamiques</li>
                         <li>Scripts d'automatisation sur Linux en Bash</li>
-                        <li>Utilisation de Visual Studio Code et <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Git" data-project-ids="projet5">Git</span></li>
+                        <li>Utilisation de <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Git" data-project-ids="projet5">Git</span> et Visual Studio Code</li>
                     </ul>
                 </div>
 
                 <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
                     <h3 style="color: #e67e22;">📡 Télécommunications</h3>
                     <ul>
-                        <li>Étude et manipulation de signaux analogiques et numériques</li>
-                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Matlab/Octave" data-project-ids="projet2">Utilisation de Matlab/Octave pour la simulation</span></li>
+                        <li>Étude de signaux analogiques et numériques</li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Matlab/Octave" data-project-ids="projet2">Simulation de signaux avec Matlab/Octave</span></li>
                         <li>Compréhension des circuits et composants électroniques</li>
-                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Analyse de transmission" data-project-ids="projet2">Analyse du comportement de transmission (câble coaxial)</span></li>
+                        <li><span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Analyse de transmission" data-project-ids="projet2">Analyse de la transmission (câble coaxial)</span></li>
                     </ul>
                 </div>
 
@@ -502,25 +510,16 @@
     </div>
 </div>
 
-
 <script>
-    // --- Gestion de l'affichage des sections ---
     function showSection(id) {
-        document.querySelectorAll('section').forEach(sec => {
-            sec.classList.remove('active');
-        });
+        document.querySelectorAll('section').forEach(sec => sec.classList.remove('active'));
         const target = document.getElementById(id);
-        if (target) {
-            target.classList.add('active');
-        }
+        if (target) target.classList.add('active');
     }
 
-    // --- Logique pour la modale des PROJETS ---
     const projectModal = document.getElementById('projectModal');
-
     function openModal(element) {
-        // Si l'élément passé n'a pas de data-title, on cherche son parent .apropos-bloc
-        const projectElement = element.hasAttribute('data-title') ? element : element.closest('.apropos-bloc');
+        const projectElement = element.closest('.apropos-bloc');
         if (!projectElement) return;
 
         document.getElementById('modal-title').innerText = projectElement.getAttribute('data-title');
@@ -533,14 +532,11 @@
 
         projectModal.style.display = "block";
     }
-
     function closeModal() {
         projectModal.style.display = "none";
     }
 
-    // --- NOUVEAU : Logique pour la modale des COMPÉTENCES ---
     const skillModal = document.getElementById('skillModal');
-
     function openSkillModal(skillElement) {
         const skillTitle = skillElement.getAttribute('data-skill-title');
         const projectIds = skillElement.getAttribute('data-project-ids').split(',');
@@ -549,7 +545,7 @@
         const modalProjectsContainer = document.getElementById('skill-modal-projects');
 
         modalTitle.innerText = "Projets utilisant : " + skillTitle;
-        modalProjectsContainer.innerHTML = ''; // Vider le contenu précédent
+        modalProjectsContainer.innerHTML = '';
 
         projectIds.forEach(id => {
             const projectElement = document.getElementById(id.trim());
@@ -559,39 +555,25 @@
 
                 const card = document.createElement('div');
                 card.className = 'skill-project-card';
-                // Important : on passe l'ID du projet pour que la fonction openModal puisse le retrouver
                 card.setAttribute('onclick', `openModal(document.getElementById('${id.trim()}'))`);
                 
-                card.innerHTML = `
-                    <h4>${title}</h4>
-                    <p><strong>Catégorie :</strong>${category}</p>
-                `;
+                card.innerHTML = `<h4>${title}</h4><p><strong>Catégorie :</strong>${category}</p>`;
                 modalProjectsContainer.appendChild(card);
             }
         });
 
         skillModal.style.display = 'block';
     }
-
     function closeSkillModal() {
         skillModal.style.display = "none";
     }
 
-
-    // --- Gestion de la fermeture des modales au clic extérieur ---
     window.onclick = function(event) {
-        if (event.target == projectModal) {
-            closeModal();
-        }
-        if (event.target == skillModal) {
-            closeSkillModal();
-        }
+        if (event.target == projectModal) closeModal();
+        if (event.target == skillModal) closeSkillModal();
     }
 
-    // Affiche la section accueil par défaut au chargement
-    document.addEventListener('DOMContentLoaded', () => {
-        showSection('accueil');
-    });
+    document.addEventListener('DOMContentLoaded', () => showSection('accueil'));
 </script>
 
 <footer>
