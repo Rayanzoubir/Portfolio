@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 
 <head>
@@ -77,11 +77,10 @@
         }
 
         .btn {
-  background: linear-gradient(145deg, #000000, #2c2c2c);
-  border: 2px solid #fff;
-  letter-spacing: 1px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-
+            background: linear-gradient(145deg, #000000, #2c2c2c);
+            border: 2px solid #fff;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
             background-color: #000;
             color: #fff;
             padding: 12px 20px;
@@ -95,10 +94,9 @@
         }
 
         .btn:hover {
-  transform: scale(1.05);
-  background: #333;
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
-
+            transform: scale(1.05);
+            background: #333;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.6);
             transform: translateY(-3px);
             background-color: #222;
         }
@@ -116,19 +114,19 @@
         }
 
         .photo-container img {
-    width: 160px;
-    height: 160px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 3px solid #000;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+            width: 160px;
+            height: 160px;
+            object-fit: cover;
+            border-radius: 50%;
+            border: 3px solid #000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-.photo-container img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
-}
+        .photo-container img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+        }
 
         .accueil-wrapper {
             background: rgba(0, 0, 0, 0.7);
@@ -143,44 +141,49 @@
         }
 
         .accueil-wrapper h2 {
-    font-size: 2.5em;
-    margin-bottom: 20px;
-    animation: fadeIn 1.4s ease;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            animation: fadeIn 1.4s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
 
-.accueil-wrapper h2:hover {
-    transform: translateY(-4px);
-    color: #ffffff;
-}
+        .accueil-wrapper h2:hover {
+            transform: translateY(-4px);
+            color: #ffffff;
+        }
 
         .accueil-wrapper p {
-    font-size: 1.2em;
-    max-width: 720px;
-    margin: 0 auto 20px auto;
-    animation: fadeIn 1.6s ease;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
+            font-size: 1.2em;
+            max-width: 720px;
+            margin: 0 auto 20px auto;
+            animation: fadeIn 1.6s ease;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
 
-.accueil-wrapper p:hover {
-    transform: translateY(-3px);
-    color: #dddddd;
-}
+        .accueil-wrapper p:hover {
+            transform: translateY(-3px);
+            color: #dddddd;
+        }
 
         .apropos-bloc {
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  background-color: rgba(255,255,255,0.05);
-  padding: 20px;
-  border-radius: 10px;
-  will-change: transform;
-  position: relative;
-  overflow: hidden;
-}
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            background-color: rgba(255,255,255,0.05);
+            padding: 20px;
+            border-radius: 10px;
+            will-change: transform;
+            position: relative;
+            overflow: hidden;
+            text-align: left;
+        }
 
         .apropos-bloc:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-}
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+        }
+        
+        #projets .apropos-bloc {
+            cursor: pointer;
+        }
 
         footer {
             background-color: rgba(0, 0, 0, 0.85);
@@ -189,59 +192,107 @@
             padding: 10px;
             margin-top: auto;
         }
-    .apropos-bloc h3:hover {
-  transform: scale(1.05);
-  color: inherit;
-}
+        .apropos-bloc h3:hover {
+            transform: scale(1.05);
+            color: inherit;
+        }
 
-.slogan {
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  display: block;
-  text-align: center;
-  font-size: 1.1em;
-  font-weight: bold;
-  margin-bottom: 15px;
-  color: #fffb;
-  font-style: italic;
-  animation: fadeIn 1s ease-in-out;
-}
+        .slogan {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            display: block;
+            text-align: center;
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #fffb;
+            font-style: italic;
+            animation: fadeIn 1s ease-in-out;
+        }
 
-.apropos-bloc:nth-child(1) { animation: fadeIn 1s ease-in-out 0.3s both; }
-.apropos-bloc:nth-child(2) { animation: fadeIn 1s ease-in-out 0.6s both; }
-.apropos-bloc:nth-child(3) { animation: fadeIn 1s ease-in-out 0.9s both; }
+        .slogan:hover {
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255,255,255,0.6);
+            transform: scale(1.02);
+            transition: all 0.3s ease-in-out;
+        }
 
-.slogan:hover {
-  color: #ffffff;
-  text-shadow: 0 0 8px rgba(255,255,255,0.6);
-  transform: scale(1.02);
-  transition: all 0.3s ease-in-out;
-}
+        .slogan::after {
+            content: "";
+            display: block;
+            width: 100px;
+            height: 2px;
+            background-color: #fff;
+            margin: 10px auto 0;
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
 
-.slogan::after {
-  content: "";
-  display: block;
-  width: 100px;
-  height: 2px;
-  background-color: #fff;
-  margin: 10px auto 0;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform 0.3s ease;
-}
+        .slogan:hover::after {
+            transform: scaleX(1);
+        }
 
-.slogan:hover::after {
-  transform: scaleX(1);
-}
+        .modal {
+            display: none;
+            position: fixed; 
+            z-index: 200; 
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            animation: fadeIn 0.5s;
+        }
 
+        .modal-content {
+            background-color: #1e1e1e;
+            color: #f1f1f1;
+            margin: 10% auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            position: relative;
+            animation: slideIn 0.5s ease-out;
+            text-align: left;
+        }
 
+        @keyframes slideIn {
+            from {transform: translateY(-50px); opacity: 0;}
+            to {transform: translateY(0); opacity: 1;}
+        }
 
+        .close {
+            color: #aaa;
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 28px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
 
+        .close:hover,
+        .close:focus {
+            color: #fff;
+            text-decoration: none;
+            cursor: pointer;
+        }
 
-
-
-
-
-</style>
+        .modal-content h3 {
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+        
+        .modal-content p {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+            line-height: 1.7;
+        }
+    </style>
 </head>
 
 <body>
@@ -257,184 +308,229 @@
 <div class="container">
 
     <section id="accueil" class="active">
-        <div class="accueil-wrapper" style="max-width: 800px;">
+        <div class="accueil-wrapper" style="max-width: 800px; text-align: center;">
             <div class="photo-container">
                 <img src="pdp.png" alt="Photo de Zoubir Rayan">
             </div>
             <span class="slogan">“Knowledge is power.” — Francis Bacon</span>
-<p class="manga-style">Je m'appelle Zoubir Rayan. Bienvenue ! Je suis ravi de vous accueillir sur mon portfolio.</p>
-<p class="manga-style"> Vous y découvrirez mon parcours, mes projets et mes compétences en réseaux, cybersécurité et programmation. Naviguez librement pour en apprendre plus sur moi et mon univers professionnel.</p>
+            <p class="manga-style">Je m'appelle Zoubir Rayan. Bienvenue ! Je suis ravi de vous accueillir sur mon portfolio.</p>
+            <p class="manga-style"> Vous y découvrirez mon parcours, mes projets et mes compétences en réseaux, cybersécurité et programmation. Naviguez librement pour en apprendre plus sur moi et mon univers professionnel.</p>
             <a href="#" class="btn manga-style" onclick="showSection('apropos')">Me découvrir</a>
         </div>
     </section>
 
     <section id="projets">
-        <div class="accueil-wrapper" style="max-width: 1350px;">
+        <div class="accueil-wrapper" style="max-width: 1350px; text-align: center;">
             <h2>Mes Projets</h2>
-            <p>Durant ma première année de BUT Réseaux & Télécommunications, j'ai mené plusieurs projets concrets couvrant les domaines clés de la formation : réseau, cybersécurité, télécoms, développement web et communication. Chaque projet présenté ici inclut une description précise, les compétences acquises ainsi qu'une preuve téléchargeable.</p>
-    
-            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center;">
-    
-                <!-- Projet 1 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+            <p>Durant ma formation, j'ai mené plusieurs projets concrets. Cliquez sur un projet pour voir plus de détails.</p>
+        
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 20px;">
+        
+                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;" 
+                     onclick="openModal(this)"
+                     data-title="📸 PHOTO_ATB – Gestion de photos avioniques"
+                     data-details="Ce projet, réalisé en partenariat avec Thales, consistait à développer un système complet pour l'archivage photographique de bancs de tests avioniques. L'objectif était d'assurer une traçabilité visuelle de la configuration du matériel avant chaque exécution de test. La solution prend la forme d'un site web hébergé localement sur un Raspberry Pi, permettant une capture de photo manuelle ou automatique. Le système intègre une gestion avancée des utilisateurs avec plusieurs rôles (Opérateur, Administrateur, Super Administrateur), chacun disposant de droits spécifiques. J'ai contribué à la conception du schéma de communication entre les composants matériels (Raspberry Pi, Pico) et l'interface web, ainsi qu'à la définition des exigences fonctionnelles et techniques."
+                     data-competences="Gestion de projet (Gantt, RACI), Conception de base de données (schéma entité-association), Développement d'interface web (maquettes), Algorithmique (gestion des capteurs), Sécurité applicative (gestion des rôles, authentification), Architecture système (communication Raspberry Pi / Pico)."
+                     data-link="rapport15.docx"
+                     data-link-text="Télécharger le rapport">
                     <h3 style="color: #3498db;">📸 PHOTO_ATB – Gestion de photos avioniques</h3>
                     <p><strong>Catégorie :</strong> Réseau & Web | SAÉ 1.05 / 1.15</p>
                     <p>J’ai conçu un site web complet permettant de gérer des photographies prises sur un banc de test avionique. J’ai travaillé sur la base de données, la sécurisation des accès, la création d’une interface utilisateur, et la gestion des rôles. Ce projet a été réalisé en collaboration avec Thales.</p>
-                    <p><strong>Compétences développées :</strong> gestion de base de données, développement web sécurisé, gestion de projet en équipe.</p>
-                    <p><a href="rapport15.docx" target="_blank" class="btn">Télécharger le rapport</a></p>
                 </div>
-    
-                <!-- Projet 2 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+        
+                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                     onclick="openModal(this)"
+                     data-title="📡 Étude d’un câble coaxial"
+                     data-details="Ce projet avait pour but d'étudier de manière approfondie les caractéristiques de transmission d'un câble coaxial. La démarche s'est déroulée en deux temps. D'abord, une phase pratique en laboratoire où, à l'aide d'un oscilloscope et d'un générateur de fonctions, nous avons effectué des mesures pour quantifier l'atténuation du signal en fonction de la fréquence et mesurer le retard de propagation. Ensuite, une phase de modélisation théorique sous Octave (un équivalent de MATLAB) où nous avons appliqué la formule théorique de l'atténuation. L'objectif final était de comparer les courbes obtenues par la mesure et par la simulation pour valider notre modèle et comprendre les écarts éventuels, illustrant la relation entre théorie et pratique."
+                     data-competences="Mesures physiques (oscilloscope, GBF), Analyse de signaux (atténuation, retard de propagation), Simulation et modélisation (Octave/MATLAB), Traitement et visualisation de données, Comparaison de résultats théoriques et pratiques, Rédaction de rapport technique."
+                     data-link="Zoubir_Rayan-SAE13-Rapport.pdf"
+                     data-link-text="Télécharger le rapport d'étude">
                     <h3 style="color: #2ecc71;">📡 Étude d’un câble coaxial</h3>
                     <p><strong>Catégorie :</strong> Télécommunication | SAÉ 1.03</p>
                     <p>Ce projet consistait à étudier les performances d’un câble coaxial via des mesures physiques et simulations sur Octave. J’y ai analysé les atténuations et les retards de propagation d’un signal pour mieux comprendre les phénomènes liés à la transmission analogique.</p>
-                    <p><strong>Compétences développées :</strong> mesures électroniques, analyse de signaux, utilisation d'outils de simulation.</p>
-                    <p><a href="Zoubir_Rayan-SAE13-Rapport.pdf" target="_blank" class="btn">Télécharger le rapport</a></p>
                 </div>
-    
-                <!-- Projet 3 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+        
+                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                     onclick="openModal(this)"
+                     data-title="🎓 Sensibilisation à l’e-réputation"
+                     data-details="Dans le cadre de cette SAÉ axée sur la communication, nous avons conçu et animé une session de sensibilisation sur l'e-réputation destinée à des collégiens. Le projet consistait à créer une présentation pédagogique pour expliquer les risques et les bonnes pratiques liés à l'identité numérique. Nous avons structuré l'intervention autour de scénarios concrets (partage de photos sans consentement, cookies, fuite de données) pour illustrer nos propos. Pour maximiser l'engagement du jeune public, nous avons intégré un quiz interactif via l'outil Kahoot, permettant de rythmer la session et de valider la compréhension des messages clés de manière ludique."
+                     data-competences="Communication orale et pédagogie, Création de supports de présentation (diaporama), Vulgarisation de concepts numériques (e-réputation, RGPD, droit à l'image), Animation de groupe et interactivité (Kahoot), Sensibilisation aux risques du numérique."
+                     data-link="E-reputation.pdf"
+                     data-link-text="Télécharger le diaporama">
                     <h3 style="color: #e67e22;">🎓 Sensibilisation à l’e-réputation</h3>
                     <p><strong>Catégorie :</strong> Communication | SAÉ 1.04</p>
                     <p>Nous avons organisé une session de sensibilisation auprès de collégiens sur les risques liés à la publication de contenus en ligne. J’ai conçu le support de présentation, animé les échanges, et utilisé des outils interactifs comme Kahoot pour favoriser l’implication du public.</p>
-                    <p><strong>Compétences développées :</strong> communication orale, pédagogie, sensibilisation au numérique.</p>
-                    <p><a href="E-reputation.pdf" target="_blank" class="btn">Télécharger le diaporama</a></p>
                 </div>
-    
-                <!-- Projet 4 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+        
+                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                     onclick="openModal(this)"
+                     data-title="🌐 Conception d’un réseau d’entreprise sécurisé"
+                     data-details="Ce projet consistait à bâtir de A à Z l'infrastructure réseau simulée d'une PME à l'aide de l'outil Cisco Packet Tracer. L'architecture a été conçue autour de la sécurité et de la segmentation. Plusieurs départements (ex: Ventes, RH) ont été isolés dans des VLANs distincts pour limiter la propagation des menaces et optimiser le trafic. Les services essentiels comme le DHCP (pour l'attribution automatique d'adresses IP) et le DNS (pour la résolution de noms) ont été configurés sur des serveurs dédiés. Un point central du projet fut la mise en place d'une Zone Démilitarisée (DMZ) pour héberger le serveur web de l'entreprise, le protégeant du réseau interne. La sécurité périmétrique a été assurée par un pare-feu Cisco ASA, sur lequel des listes de contrôle d'accès (ACLs) précises ont été définies pour filtrer le trafic entrant et sortant."
+                     data-competences="Architecture réseau (segmentation, plan d'adressage), Configuration de commutateurs (VLANs), Configuration de routeurs (routage inter-VLAN), Mise en place de services réseau (DHCP, DNS), Sécurité réseau (Pare-feu ASA, ACLs, NAT/PAT, DMZ), Simulation réseau (Cisco Packet Tracer)."
+                     data-link="sae21.pkt"
+                     data-link-text="Télécharger le fichier Packet Tracer">
                     <h3 style="color: #9b59b6;">🌐 Conception d’un réseau d’entreprise sécurisé</h3>
                     <p><strong>Catégorie :</strong> Réseau | SAÉ 2.01</p>
                     <p>J’ai conçu un réseau d’entreprise complet en utilisant Cisco Packet Tracer. Le projet intégrait des VLANs, un MLS, des serveurs DHCP et DNS, une DMZ avec des serveurs web, du NAT et un pare-feu ASA avec des règles d’accès. Ce fichier simule le réseau final configuré.</p>
-                    <p><strong>Compétences développées :</strong> configuration réseau, sécurité, segmentation, simulation.</p>
-                    <p><a href="sae21.pkt" target="_blank" class="btn">Télécharger le fichier Packet Tracer</a></p>
                 </div>
-    
-                <!-- Projet 5 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+
+                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                     onclick="openModal(this)"
+                     data-title="💼 Portfolio personnel en ligne"
+                     data-details="Ce portfolio est lui-même un projet de développement web. L'objectif était de créer une vitrine professionnelle en utilisant uniquement les technologies fondamentales du web : HTML pour la structure sémantique, CSS pour la mise en page et le design, et JavaScript natif pour l'interactivité. Un accent particulier a été mis sur la création d'un design 'responsive', qui s'adapte à tous les formats d'écrans (ordinateurs, tablettes, mobiles). L'interactivité, comme la navigation entre les sections sans rechargement de page et l'apparition des fenêtres modales pour les projets, a été gérée en JavaScript. Le site est versionné avec Git et déployé via GitHub Pages, ce qui permet une mise à jour continue et un hébergement simple."
+                     data-competences="Développement front-end (HTML5, CSS3), Design responsive (Flexbox, Media Queries), JavaScript natif (vanilla JS) pour la manipulation du DOM, Intégration de design et d'animations (CSS Transitions), Gestion de versions (Git), Déploiement web (GitHub Pages)."
+                     data-link="https://rayanzoubir.github.io/Portfolio/"
+                     data-link-text="Voir le portfolio en ligne">
                     <h3 style="color: #1abc9c;">💼 Portfolio personnel en ligne</h3>
                     <p><strong>Catégorie :</strong> Développement Web | SAÉ 2.05</p>
                     <p>Ce projet consistait à concevoir un portfolio personnel en HTML/CSS permettant de valoriser mes projets et mes compétences. Le site est responsive, animé, cohérent visuellement, et publié sur GitHub Pages.</p>
-                    <p><strong>Compétences développées :</strong> design web, structuration HTML, ergonomie, hébergement.</p>
-                    <p><a href="https://rayanzoubir.github.io/Portfolio/" target="_blank" class="btn">Voir le portfolio en ligne</a></p>
                 </div>
-    
-                <!-- Projet 6 -->
-                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;">
+
+                <div class="apropos-bloc" style="flex: 1 1 45%; min-width: 300px;"
+                     onclick="openModal(this)"
+                     data-title="🔐 PHOTO_ATB – Sécurisation du système web"
+                     data-details="Cette seconde phase du projet PHOTO_ATB était entièrement dédiée au renforcement de la sécurité de l'application web. J'ai été en charge de développer et d'implémenter plusieurs mécanismes de défense. Le contrôle d'accès a été renforcé en vérifiant côté serveur les permissions de l'utilisateur pour chaque action critique. Un système de journalisation (logs) complet a été mis en place, enregistrant dans la base de données chaque tentative de connexion (réussie ou échouée), chaque création d'utilisateur ou encore chaque suppression de photo. J'ai aussi développé le système de blocage de compte après 3 tentatives infructueuses et la politique de mots de passe (complexité, non-similitude avec l'identifiant), avec des paramètres configurables par l'administrateur depuis le back-office. Enfin, le stockage des mots de passe a été sécurisé via hachage."
+                     data-competences="Sécurité des applications web (PHP), Prévention des failles (injections SQL, XSS), Contrôle d'accès basé sur les rôles (RBAC), Mise en place de politiques de mot de passe, Journalisation (logging) et audit des actions, Gestion de sessions sécurisée, Développement back-end (PHP, SQLite)."
+                     data-link="rapport_securite_PHOTO_ATB.pdf"
+                     data-link-text="Télécharger le rapport de sécurité">
                     <h3 style="color: #f39c12;">🔐 PHOTO_ATB – Sécurisation du système web</h3>
                     <p><strong>Catégorie :</strong> Cybersécurité | SAÉ 2.04</p>
                     <p>J’ai renforcé la sécurité du site PHOTO_ATB avec une vérification des rôles utilisateurs, la gestion des permissions, la journalisation des actions sensibles et la validation des formulaires côté serveur.</p>
-                    <p><strong>Compétences développées :</strong> sécurité web, logique de rôles, audit d’actions, validation serveur.</p>
-                    <p><a href="rapport_securite_PHOTO_ATB.pdf" target="_blank" class="btn">Télécharger le rapport</a></p>
                 </div>
-    
+        
             </div>
         </div>
     </section>
     
-
-
-<section id="competences">
-    <div class="accueil-wrapper" style="max-width: 1350px;">
-        <h2>Mes Compétences</h2>
-        <p>Au fil de ma formation en BUT Réseaux & Télécommunications, j’ai acquis un ensemble de compétences techniques solides. Cette section met en lumière mes capacités dans les domaines du réseau, de la cybersécurité, du développement et des télécommunications. Ces compétences sont mises en pratique dans mes projets et renforcées par des preuves concrètes.</p>
-
-        <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 30px;">
-
-            <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
-                <h3 style="color: #2980b9;">🌐 Réseaux</h3>
-                <ul>
-                    <li>Configuration de VLAN, DHCP, NAT, ACL</li>
-                    <li>Conception et simulation de réseaux avec Cisco Packet Tracer</li>
-                    <li>Utilisation de Wireshark pour l'analyse de trames</li>
-                    <li>Paramétrage de pare-feux (ASA), DMZ et routage dynamique</li>
-                </ul>
+    <section id="competences">
+        <div class="accueil-wrapper" style="max-width: 1350px; text-align: center;">
+            <h2>Mes Compétences</h2>
+            <p>Au fil de ma formation, j’ai acquis un ensemble de compétences techniques solides dans les domaines clés des réseaux et télécommunications.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; justify-content: center; margin-top: 30px; text-align: left;">
+                <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
+                    <h3 style="color: #2980b9;">🌐 Réseaux</h3>
+                    <ul>
+                        <li>Configuration de VLAN, DHCP, NAT, ACL</li>
+                        <li>Conception et simulation de réseaux avec Cisco Packet Tracer</li>
+                        <li>Utilisation de Wireshark pour l'analyse de trames</li>
+                        <li>Paramétrage de pare-feux (ASA), DMZ et routage dynamique</li>
+                    </ul>
+                </div>
+                <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
+                    <h3 style="color: #27ae60;">💻 Programmation</h3>
+                    <ul>
+                        <li>Langages : Python, C, SQL, HTML/CSS, JavaScript</li>
+                        <li>Développement de sites web statiques et dynamiques</li>
+                        <li>Scripts d'automatisation sur Linux en Bash</li>
+                        <li>Utilisation de Visual Studio Code et Git</li>
+                    </ul>
+                </div>
+                <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
+                    <h3 style="color: #e67e22;">📡 Télécommunications</h3>
+                    <ul>
+                        <li>Étude et manipulation de signaux analogiques et numériques</li>
+                        <li>Utilisation de Matlab/Octave pour la simulation de signaux</li>
+                        <li>Compréhension des circuits et composants (TP électroniques)</li>
+                        <li>Analyse du comportement de transmission (ex : câble coaxial)</li>
+                    </ul>
+                </div>
             </div>
-
-            <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
-                <h3 style="color: #27ae60;">💻 Programmation</h3>
-                <ul>
-                    <li>Langages : Python, C, SQL, HTML/CSS, JavaScript</li>
-                    <li>Développement de sites web statiques et dynamiques</li>
-                    <li>Scripts d'automatisation sur Linux en Bash</li>
-                    <li>Utilisation de Visual Studio Code et Git</li>
-                </ul>
-            </div>
-
-            <div class="apropos-bloc" style="flex: 1 1 30%; min-width: 280px;">
-                <h3 style="color: #e67e22;">📡 Télécommunications</h3>
-                <ul>
-                    <li>Étude et manipulation de signaux analogiques et numériques</li>
-                    <li>Utilisation de Matlab/Octave pour la simulation de signaux</li>
-                    <li>Compréhension des circuits et composants (TP électroniques)</li>
-                    <li>Analyse du comportement de transmission (ex : câble coaxial)</li>
-                </ul>
-            </div>
-
         </div>
-    </div>
-</section>
-
-
+    </section>
 
     <section id="apropos">
-        <div class="accueil-wrapper" style="max-width: 1400px;">
+        <div class="accueil-wrapper" style="max-width: 1400px; text-align: center;">
             <h2>À propos de moi</h2>
-            <div style="display: flex; flex-wrap: nowrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 0 auto;">
-                
-                <div class="apropos-bloc" style="flex: 1 1 300px; background-color: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; min-width: 280px; max-width: 350px; border-right: 1px solid rgba(255,255,255,0.2);">
-                    <h3 style="color: #f1c40f; transition: transform 0.3s ease;">🎓 Formation</h3>
-                    <p>Je suis en BUT Réseaux et Télécommunications, où je travaille aussi bien sur l’administration réseau que sur des projets de développement et de programmation. J'apprends à gérer des réseaux, à les sécuriser et à les maintenir. Le côté concret de cette formation me plaît beaucoup.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; max-width: 1100px; margin: 20px auto 0; text-align: left;">
+                <div class="apropos-bloc" style="flex: 1 1 300px;">
+                    <h3 style="color: #f1c40f;">🎓 Formation</h3>
+                    <p>Je suis en BUT Réseaux et Télécommunications, où je travaille aussi bien sur l’administration réseau que sur des projets de développement. J'apprends à gérer des réseaux, à les sécuriser et à les maintenir. Le côté concret de cette formation me plaît beaucoup.</p>
                 </div>
-                <div class="apropos-bloc" style="flex: 1 1 300px; background-color: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; min-width: 280px; max-width: 350px; border-right: 1px solid rgba(255,255,255,0.2);">
-                    <h3 style="color: #e67e22; transition: transform 0.3s ease;">🎮 Jeux vidéo</h3>
+                <div class="apropos-bloc" style="flex: 1 1 300px;">
+                    <h3 style="color: #e67e22;">🎮 Jeux vidéo</h3>
                     <p>Je joue principalement à Counter-Strike 2 sur mon temps libre. J’aime les aspects compétitifs, les stratégies d’équipe et le besoin de précision. J’aime les moments sous pression où chaque action est décisive.</p>
                 </div>
-                <div class="apropos-bloc" style="flex: 1 1 300px; background-color: rgba(255,255,255,0.05); padding: 20px; border-radius: 10px; min-width: 280px; max-width: 350px; border-right: 1px solid rgba(255,255,255,0.2);">
-                    <h3 style="color: #1abc9c; transition: transform 0.3s ease;">💻 Technologie</h3>
+                <div class="apropos-bloc" style="flex: 1 1 300px;">
+                    <h3 style="color: #1abc9c;">💻 Technologie</h3>
                     <p>Je m'intéresse à l'actualité autour du matériel informatique. Je suis les sorties de composants et les tendances hardware, mais ce que j'aime surtout, c'est tout l'engouement qu'il peut y avoir autour de chaque nouveauté.</p>
                 </div>
             </div>
         </div>
     </section>
 
-  <section id="contact">
-    <div class="accueil-wrapper">
-        <h2>Contact</h2>
-        <p>
-            <a href="mailto:rayanzoubir6gmail.com" style="color: #fff; text-decoration: none;">
-                <img src="https://img.icons8.com/ios-filled/20/ffffff/email.png" style="vertical-align:middle; margin-right:8px;"/>
-                rayanzoubir6gmail.com
-            </a>
-        </p>
-        <p>
-            <a href="https://www.linkedin.com/in/rayan-zoubir-98635a34b" target="_blank" style="color: #0e76a8; font-weight: bold; text-decoration: none;">
-                <img src="https://img.icons8.com/ios-filled/20/0e76a8/linkedin.png" style="vertical-align:middle; margin-right:8px;"/>
-                Mon profil LinkedIn
-            </a>
-        </p>
-        <a href="CV.pdf" target="_blank" class="btn">Télécharger mon CV</a>
-    </div>
-</section>
-
-
-
+    <section id="contact">
+        <div class="accueil-wrapper" style="text-align: center;">
+            <h2>Contact</h2>
+            <p style="margin-top: 20px;">
+                <a href="mailto:rayanzoubir6gmail.com" style="color: #fff; text-decoration: none; font-size: 1.1em;">
+                    <img src="https://img.icons8.com/ios-filled/20/ffffff/email.png" style="vertical-align:middle; margin-right:8px;" alt="email icon"/>
+                    rayanzoubir6gmail.com
+                </a>
+            </p>
+            <p style="margin-top: 20px;">
+                <a href="https://www.linkedin.com/in/rayan-zoubir-98635a34b" target="_blank" style="color: #fff; text-decoration: none; font-size: 1.1em;">
+                    <img src="https://img.icons8.com/ios-filled/20/ffffff/linkedin.png" style="vertical-align:middle; margin-right:8px;" alt="linkedin icon"/>
+                    Mon profil LinkedIn
+                </a>
+            </p>
+            <a href="CV.pdf" target="_blank" class="btn" style="margin-top: 30px;">Télécharger mon CV</a>
+        </div>
+    </section>
 
 </div>
 
-<script>
-    function showSection(id) {
-        const target = document.getElementById(id);
-        if (!target) return;
+<div id="projectModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h3 id="modal-title"></h3>
+        <p id="modal-details"></p>
+        <p><strong>Compétences développées :</strong></p>
+        <p id="modal-competences"></p>
+        <a href="#" id="modal-link" target="_blank" class="btn"></a>
+    </div>
+</div>
 
+<script>
+    // Gère l'affichage des sections
+    function showSection(id) {
         document.querySelectorAll('section').forEach(sec => {
             sec.classList.remove('active');
         });
-
-        target.classList.add('active');
-        target.scrollIntoView({ behavior: 'smooth' });
+        const target = document.getElementById(id);
+        if (target) {
+            target.classList.add('active');
+        }
     }
+
+    // Logique pour la fenêtre modale
+    const modal = document.getElementById('projectModal');
+
+    function openModal(element) {
+        document.getElementById('modal-title').innerText = element.getAttribute('data-title');
+        document.getElementById('modal-details').innerText = element.getAttribute('data-details');
+        document.getElementById('modal-competences').innerText = element.getAttribute('data-competences');
+        
+        const modalLink = document.getElementById('modal-link');
+        modalLink.href = element.getAttribute('data-link');
+        modalLink.innerText = element.getAttribute('data-link-text');
+
+        modal.style.display = "block";
+    }
+
+    function closeModal() {
+        modal.style.display = "none";
+    }
+
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            closeModal();
+        }
+    }
+
+    // Affiche la section accueil par défaut au chargement
+    document.addEventListener('DOMContentLoaded', () => {
+        showSection('accueil');
+    });
 </script>
 
 <footer>
