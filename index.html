@@ -7,10 +7,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --nav-height: 65px;
-            --primary-color: #3498db; /* Bleu standard */
-            --cyber-color: #e74c3c;   /* Rouge pour le cyber */
-            --bg-card: rgba(255,255,255,0.07);
+            --nav-height: 70px;
+            --primary-color: #3498db; /* Bleu Tech */
+            --cyber-color: #e74c3c;   /* Rouge Cyber */
+            --telecom-color: #2ecc71; /* Vert Telecom */
+            --bg-dark: #0f0f0f;
+            --bg-card: rgba(30, 30, 30, 0.6);
+            --glass-bg: rgba(20, 20, 20, 0.85);
+            --text-main: #ecf0f1;
+            --text-muted: #bdc3c7;
         }
 
         * {
@@ -21,6 +26,7 @@
 
         html, body {
             overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         .no-scroll {
@@ -31,16 +37,36 @@
             font-family: 'Roboto', sans-serif;
             background: url('fond.jpeg') no-repeat center center fixed;
             background-size: cover;
-            color: #e0e0e0;
+            /* Ajout d'un overlay sombre pour lisibilité si l'image est claire */
+            background-color: var(--bg-dark); 
+            color: var(--text-main);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
         }
 
-        /* --- NAVIGATION --- */
+        /* --- SCROLLBAR PERSONNALISÉE --- */
+        ::-webkit-scrollbar {
+            width: 10px;
+            height: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1a1a1a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #444;
+            border-radius: 5px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary-color);
+        }
+
+        /* --- NAVIGATION (Style Glassmorphism) --- */
         nav {
-            background-color: rgba(0, 0, 0, 0.95);
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px); /* Effet de flou moderne */
+            -webkit-backdrop-filter: blur(10px);
             height: var(--nav-height);
             padding: 0 20px;
             display: flex;
@@ -49,31 +75,48 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.5);
-            border-bottom: 1px solid #333;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.3s ease;
         }
 
         #nav-links {
             display: flex;
-            gap: 20px;
+            gap: 25px;
         }
 
         nav button {
-            background-color: transparent;
+            background: transparent;
             color: #fff;
-            border: 1px solid rgba(255,255,255,0.3);
+            border: 2px solid transparent;
             cursor: pointer;
-            font-size: 1em;
+            font-size: 1.05em;
             font-weight: 500;
             padding: 8px 16px;
-            border-radius: 4px;
-            transition: all 0.3s ease;
+            border-radius: 25px;
+            transition: all 0.4s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        nav button::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
         }
 
         nav button:hover {
-            background-color: #fff;
-            color: #000;
-            transform: translateY(-2px);
+            color: var(--primary-color);
+        }
+        
+        nav button:hover::before {
+            width: 100%;
         }
 
         /* --- HAMBURGER --- */
@@ -93,6 +136,7 @@
             margin: 5px auto;
             background-color: #fff;
             transition: all 0.3s ease-in-out;
+            border-radius: 2px;
         }
 
         @media (max-width: 768px) {
@@ -107,24 +151,25 @@
                 left: -100%;
                 top: 0;
                 flex-direction: column;
-                background-color: #000;
+                background-color: rgba(0,0,0,0.95);
+                backdrop-filter: blur(15px);
                 width: 100%;
                 height: 100vh;
                 justify-content: center;
-                transition: left 0.3s ease-in-out;
+                transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
                 padding: 0;
             }
             #nav-links.active { left: 0; }
-            #nav-links button { width: 80%; border: none; border-bottom: 1px solid #333; padding: 20px; }
+            #nav-links button { width: auto; border: none; font-size: 1.5em; margin: 15px 0; }
         }
 
         /* --- CONTAINER GLOBAL --- */
         .container {
             flex: 1;
             width: 100%;
-            max-width: 1200px;
+            max-width: 1300px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
         section {
@@ -134,229 +179,236 @@
 
         section.active {
             display: block;
-            animation: fadeIn 0.8s ease-in-out;
+            animation: fadeIn Up 0.8s ease-out;
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- BOUTONS GÉNÉRAUX --- */
+        /* --- BOUTONS D'ACTION --- */
         .btn {
-            background: var(--primary-color);
+            background: linear-gradient(135deg, var(--primary-color), #2980b9);
             border: none;
             color: #fff;
-            padding: 12px 25px;
-            border-radius: 5px;
+            padding: 12px 30px;
+            border-radius: 50px;
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
             font-weight: bold;
-            transition: background 0.3s, transform 0.2s;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
         }
 
         .btn:hover {
-            background: #2980b9;
-            transform: scale(1.02);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
         }
 
         /* --- WRAPPERS (Cadres) --- */
         .accueil-wrapper {
-            background: rgba(0, 0, 0, 0.85);
-            color: #f1f1f1;
-            padding: 40px;
-            border-radius: 15px;
-            max-width: 750px;
-            margin: 40px auto;
+            background: var(--bg-card);
+            backdrop-filter: blur(5px);
+            color: var(--text-main);
+            padding: 50px;
+            border-radius: 20px;
+            max-width: 800px;
+            margin: 20px auto;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
-            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255,255,255,0.05);
         }
 
         .photo-container img {
-            width: 150px;
-            height: 150px;
+            width: 160px;
+            height: 160px;
             object-fit: cover;
             border-radius: 50%;
             border: 4px solid var(--primary-color);
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
+            transition: transform 0.5s ease;
+        }
+        
+        .photo-container img:hover {
+            transform: scale(1.05) rotate(5deg);
         }
 
         .welcome-text {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.3em;
-            font-weight: 400;
-            margin: 20px 0;
-            white-space: normal;
+            font-size: 1.4em;
+            margin: 25px 0;
+            font-weight: 300;
         }
         
         .stage-mention {
+            background: rgba(52, 152, 219, 0.1);
             color: var(--primary-color);
+            padding: 10px 20px;
+            border-radius: 8px;
             font-weight: bold;
             font-size: 1.1em;
-            margin-bottom: 20px;
-            display: block;
+            display: inline-block;
+            margin-bottom: 25px;
+            border: 1px solid rgba(52, 152, 219, 0.3);
         }
 
         /* --- BLOCS A PROPOS --- */
         .apropos-container {
             display: flex;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 25px;
             justify-content: center;
-            margin-top: 20px;
+            margin-top: 30px;
         }
 
         .apropos-bloc {
-            background-color: var(--bg-card);
-            padding: 25px;
-            border-radius: 8px;
+            background-color: rgba(255,255,255,0.03);
+            padding: 30px;
+            border-radius: 15px;
             flex: 1 1 300px;
             text-align: left;
-            border-left: 3px solid var(--primary-color);
+            border-left: 4px solid var(--primary-color);
             transition: transform 0.3s, background-color 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
         }
         
         .apropos-bloc:hover {
-            background-color: rgba(255,255,255,0.1);
-            transform: translateY(-5px);
+            background-color: rgba(255,255,255,0.07);
+            transform: translateY(-10px);
         }
 
-        .apropos-bloc h3 {
-            margin-bottom: 15px;
-            font-size: 1.4em;
-            color: #fff;
-        }
+        .apropos-bloc h3 { margin-bottom: 15px; font-size: 1.5em; }
 
-        /* --- PROJETS : STYLES MODIFIÉS --- */
+        /* --- PROJETS : STYLES VISUELS --- */
         
         .title-shadow {
-            text-shadow: 
-                -2px -2px 0 #000,  
-                 2px -2px 0 #000,
-                -2px  2px 0 #000,
-                 2px  2px 0 #000,
-                 0 0 10px #000; 
-            color: #fff;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .category-section {
-            margin-bottom: 40px;
+            margin-bottom: 50px;
+            position: relative;
         }
 
         .category-title {
-            font-size: 1.8em;
-            margin-bottom: 15px;
+            font-size: 1.5em;
+            margin-bottom: 20px;
             color: #fff;
+            background: linear-gradient(90deg, rgba(0,0,0,0.8), transparent);
+            padding: 10px 20px;
             border-left: 5px solid var(--primary-color);
-            padding-left: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            background: rgba(0,0,0,0.5); 
+            border-radius: 0 50px 50px 0;
             display: inline-block;
-            padding-right: 15px;
         }
 
-        .category-title.cyber {
-            border-left-color: var(--cyber-color);
-            color: var(--cyber-color);
-        }
+        .category-title.cyber { border-color: var(--cyber-color); }
 
         .projects-scroller {
             display: flex;
             overflow-x: auto;
-            gap: 20px;
-            padding-bottom: 20px;
+            gap: 25px;
+            padding: 20px 5px; /* Padding pour l'ombre hover */
             scroll-behavior: smooth;
-            scrollbar-width: thin;
-            scrollbar-color: #555 transparent;
         }
-
-        .projects-scroller::-webkit-scrollbar {
-            height: 8px;
-        }
-        .projects-scroller::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.05);
-            border-radius: 4px;
-        }
-        .projects-scroller::-webkit-scrollbar-thumb {
-            background-color: #555;
-            border-radius: 4px;
-        }
+        
+        /* Masquer la scrollbar par défaut pour un look cleaner, mais garder scrollable */
+        .projects-scroller::-webkit-scrollbar { height: 6px; }
+        .projects-scroller::-webkit-scrollbar-track { background: transparent; }
+        .projects-scroller::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
 
         .project-card {
-            background-color: #1a1a1a;
+            background: linear-gradient(145deg, #1e1e1e, #141414);
             min-width: 300px;
             max-width: 300px;
-            padding: 20px;
-            border-radius: 10px;
+            padding: 25px;
+            border-radius: 15px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet ressort */
+            border: 1px solid rgba(255,255,255,0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-            border-color: var(--primary-color);
-        }
-
-        .project-card.cyber-card:hover {
-            border-color: var(--cyber-color);
-            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.2);
-        }
-
-        .project-card h3 {
-            font-size: 1.2em;
-            margin-bottom: 10px;
-            color: #fff;
-        }
-        
-        .project-card p {
-            font-size: 0.9em;
-            color: #ccc;
-            margin-bottom: 15px;
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
+            position: relative;
             overflow: hidden;
         }
 
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 4px;
+            background: var(--primary-color);
+            transition: height 0.3s ease;
+        }
+        
+        .project-card.cyber-card::before { background: var(--cyber-color); }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .project-card.cyber-card:hover {
+            box-shadow: 0 15px 30px rgba(231, 76, 60, 0.25);
+        }
+
+        .project-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 12px;
+            color: #fff;
+            margin-top: 10px;
+        }
+        
+        .project-card p {
+            font-size: 0.95em;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
         .read-more {
-            font-size: 0.85em;
+            font-size: 0.9em;
             color: var(--primary-color);
             font-weight: bold;
             margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s;
         }
+        
+        .project-card:hover .read-more { gap: 10px; }
 
         /* --- COMPÉTENCES --- */
         .skill-category {
             margin-bottom: 30px;
-            background: rgba(0,0,0,0.6);
-            padding: 20px;
-            border-radius: 10px;
+            background: rgba(20, 20, 20, 0.8);
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
         
         .clickable-skill {
             display: inline-block;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.05);
             color: #ddd;
-            padding: 6px 12px;
-            margin: 4px 2px;
-            border-radius: 20px;
-            font-size: 0.9em;
+            padding: 8px 16px;
+            margin: 5px 3px;
+            border-radius: 25px;
+            font-size: 0.95em;
             cursor: pointer;
             transition: all 0.3s;
             border: 1px solid rgba(255,255,255,0.1);
         }
 
         .clickable-skill.cyber-skill {
-            border-color: rgba(231, 76, 60, 0.5);
+            border-color: rgba(231, 76, 60, 0.3);
             color: #ffcccc;
         }
 
@@ -364,77 +416,126 @@
             background-color: var(--primary-color);
             color: #fff;
             border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
         }
         
         .clickable-skill.cyber-skill:hover {
             background-color: var(--cyber-color);
             border-color: var(--cyber-color);
+            box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
         }
 
-        /* --- MODALES --- */
+        /* --- MODALES & ALIGNEMENT GRILLE --- */
         
-        /* Z-INDEX IMPORTANT : Projet (2010) > Skill (2000) */
-        .modal { display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; overflow: auto; background-color: rgba(0,0,0,0.9); backdrop-filter: blur(5px); }
+        .modal { 
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0; top: 0; 
+            width: 100%; height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.85); 
+            backdrop-filter: blur(8px); 
+        }
         
-        #projectModal { z-index: 2010; } /* Force le projet à être devant */
+        #projectModal { z-index: 2010; } /* Toujours au-dessus */
 
         .modal-content {
-            background-color: #1e1e1e;
+            background: linear-gradient(160deg, #222, #111);
             margin: 5vh auto;
-            padding: 0;
-            border: 1px solid #444;
+            border: 1px solid #333;
             width: 90%;
-            max-width: 800px;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+            max-width: 900px;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
             position: relative;
-            animation: slideIn 0.4s ease-out;
+            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             display: flex;
             flex-direction: column;
         }
 
         .modal-header {
-            padding: 20px 30px;
+            padding: 25px 30px;
             border-bottom: 1px solid #333;
-            background: rgba(255,255,255,0.02);
+            background: rgba(255,255,255,0.03);
+            border-radius: 20px 20px 0 0;
         }
 
-        .modal-header h3 { font-size: 1.8em; color: var(--primary-color); margin: 0; }
-        .modal-body { padding: 30px; overflow-y: auto; max-height: 70vh; }
+        .modal-header h3 { 
+            font-size: 2em; 
+            background: linear-gradient(90deg, var(--primary-color), #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin: 0; 
+        }
+
+        .modal-body { padding: 40px; overflow-y: auto; max-height: 70vh; }
         
-        .modal-section { margin-bottom: 25px; }
-        .modal-section h4 { color: #aaa; text-transform: uppercase; font-size: 0.85em; letter-spacing: 1px; margin-bottom: 10px; border-bottom: 1px solid #333; padding-bottom: 5px; }
-        .modal-section p { color: #ddd; font-size: 1em; }
+        .modal-section { margin-bottom: 30px; }
+        .modal-section h4 { 
+            color: var(--text-muted); 
+            text-transform: uppercase; 
+            font-size: 0.9em; 
+            letter-spacing: 1.5px; 
+            margin-bottom: 12px; 
+            border-bottom: 1px solid #444; 
+            padding-bottom: 8px; 
+            display: inline-block;
+        }
+        .modal-section p { color: #eee; font-size: 1.1em; line-height: 1.7; }
         
         .modal-footer {
             padding: 20px 30px;
             border-top: 1px solid #333;
             text-align: right;
-            background: rgba(255,255,255,0.02);
+            background: rgba(0,0,0,0.2);
+            border-radius: 0 0 20px 20px;
         }
 
-        .close { color: #fff; position: absolute; top: 15px; right: 20px; font-size: 30px; font-weight: bold; cursor: pointer; transition: 0.3s; z-index: 10; }
-        .close:hover { color: var(--cyber-color); }
+        .close { 
+            color: #fff; 
+            position: absolute; 
+            top: 20px; right: 25px; 
+            font-size: 35px; 
+            font-weight: 300; 
+            cursor: pointer; 
+            transition: 0.3s; 
+            z-index: 10; 
+            line-height: 20px;
+        }
+        .close:hover { color: var(--cyber-color); transform: rotate(90deg); }
 
-        /* Style spécifique pour la liste des projets dans la modale compétence */
+        /* --- GRILLE POUR LA LISTE DES PROJETS DANS COMPETENCES --- */
         #skill-modal-projects {
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
-            justify-content: center;
-            padding-top: 10px;
+            flex-wrap: wrap;        /* Important : passage à la ligne */
+            gap: 25px;              /* Espace entre les cartes */
+            justify-content: center; /* Centrage horizontal */
+            padding-top: 20px;
         }
 
-        /* Ajustement de la taille des cartes quand elles sont dans la modale */
+        /* Force les cartes à avoir une taille fixe dans la modale */
         #skill-modal-projects .project-card {
-            min-width: 250px;
-            max-width: 100%;
+            width: 280px;          
+            min-width: 280px;      
+            max-width: 280px;
+            flex: 0 0 auto;        
             margin: 0;
+            background: #1a1a1a;   /* Fond légèrement plus clair dans la modale */
         }
 
-        footer { background-color: #000; color: #888; text-align: center; padding: 20px; margin-top: auto; font-size: 0.9em; }
+        footer { 
+            background-color: #050505; 
+            color: #666; 
+            text-align: center; 
+            padding: 30px; 
+            margin-top: auto; 
+            font-size: 0.9em; 
+            border-top: 1px solid #222;
+        }
 
-        @keyframes slideIn { from {transform: translateY(30px); opacity: 0;} to {transform: translateY(0); opacity: 1;} }
+        @keyframes slideIn { from {transform: translateY(50px) scale(0.9); opacity: 0;} to {transform: translateY(0) scale(1); opacity: 1;} }
     </style>
 </head>
 
@@ -463,23 +564,23 @@
             </div>
             
             <p class="welcome-text">
-                Je m'appelle Zoubir Rayan, bienvenue sur mon portfolio professionnel.
+                Je m'appelle <strong>Zoubir Rayan</strong>, bienvenue sur mon portfolio professionnel.
             </p>
 
-            <span class="stage-mention">Actuellement étudiant en 2ème année de BUT R&T, je suis à la recherche d'un stage de 10 semaines en Cybersécurité ou Réseaux.</span>
+            <span class="stage-mention">🚀 Étudiant BUT R&T 2ème année • Recherche stage 10 semaines (Cyber/Réseaux)</span>
 
-            <p style="font-size: 1em; opacity: 0.8;">
-                Passionné par la sécurité des systèmes d'information et l'architecture réseau. 
-                Naviguez librement pour découvrir mes projets et mes compétences.
+            <p style="font-size: 1.1em; opacity: 0.9; max-width: 600px; margin: 0 auto;">
+                Passionné par la <strong>sécurité des systèmes d'information</strong> et l'architecture réseau. 
+                J'aime construire, sécuriser et comprendre comment les choses fonctionnent.
             </p>
 
-            <a href="#" class="btn" onclick="showSection('projets')">Voir mes projets</a>
+            <a href="#" class="btn" onclick="showSection('projets')">Explorer mes projets</a>
         </div>
     </section>
 
     <section id="apropos">
-        <div class="accueil-wrapper" style="max-width: 1200px; width: 100%; background: rgba(0,0,0,0.9);">
-            <h2>À propos de moi</h2>
+        <div class="accueil-wrapper" style="max-width: 1200px; width: 100%; background: rgba(20,20,20,0.9);">
+            <h2 class="title-shadow" style="font-size: 2.5em; margin-bottom: 20px;">À propos de moi</h2>
             <div class="apropos-container">
                 <div class="apropos-bloc">
                     <h3 style="color: #f1c40f;">🎓 Formation</h3>
@@ -500,8 +601,8 @@
     <section id="projets">
         <div style="max-width: 1400px; margin: 0 auto;">
             
-            <h2 class="title-shadow" style="text-align: center; margin-bottom: 20px; font-size: 2.8em;">Mes Projets</h2>
-            <p class="title-shadow" style="text-align: center; margin-bottom: 50px; font-size: 1.2em; font-weight: bold;">Découvrez mes réalisations classées par domaine d'expertise.</p>
+            <h2 class="title-shadow" style="text-align: center; margin-bottom: 10px; font-size: 3em;">Mes Projets</h2>
+            <p style="text-align: center; margin-bottom: 60px; font-size: 1.2em; color: #aaa;">Une sélection de mes réalisations techniques.</p>
 
             <div class="category-section">
                 <h3 class="category-title cyber">🛡️ Cybersécurité & Développement</h3>
@@ -618,11 +719,11 @@
     </section>
     
     <section id="competences">
-        <div class="accueil-wrapper" style="max-width: 1200px; width:100%; background:rgba(0,0,0,0.9);">
-            <h2>Mes Compétences</h2>
-            <p style="margin-bottom: 30px;">Une vision transverse : de l'infrastructure physique à la couche applicative.</p>
+        <div class="accueil-wrapper" style="max-width: 1200px; width:100%; background:rgba(20,20,20,0.9);">
+            <h2 class="title-shadow" style="font-size: 2.5em; margin-bottom: 20px;">Mes Compétences</h2>
+            <p style="margin-bottom: 40px; color: #ccc;">Une vision transverse : de l'infrastructure physique à la couche applicative.</p>
             
-            <div style="display: flex; flex-wrap: wrap; gap: 20px; text-align: left;">
+            <div style="display: flex; flex-wrap: wrap; gap: 30px; text-align: left;">
                 
                 <div class="skill-category" style="flex: 1 1 300px; border-top: 3px solid #e74c3c;">
                     <h3 style="color: #e74c3c; margin-bottom: 15px;">🛡️ Cybersécurité</h3>
@@ -660,16 +761,16 @@
 
     <section id="contact">
         <div class="accueil-wrapper">
-            <h2>Me Contacter</h2>
+            <h2 class="title-shadow" style="font-size: 2.5em; margin-bottom: 20px;">Me Contacter</h2>
             <p>Mon profil vous intéresse pour un stage ou une collaboration ?</p>
-            <div style="margin-top: 30px; display: flex; flex-direction: column; gap: 15px; align-items: center;">
-                <a href="mailto:rayanzoubir6@gmail.com" class="btn" style="background: #333; margin:0; width: 100%; max-width: 300px;">
+            <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center;">
+                <a href="mailto:rayanzoubir6@gmail.com" class="btn" style="background: linear-gradient(135deg, #444, #222); width: 100%; max-width: 350px;">
                     📧 rayanzoubir6@gmail.com
                 </a>
-                <a href="https://www.linkedin.com/in/rayan-zoubir-98635a34b" target="_blank" class="btn" style="background: #0077b5; margin:0; width: 100%; max-width: 300px;">
+                <a href="https://www.linkedin.com/in/rayan-zoubir-98635a34b" target="_blank" class="btn" style="background: linear-gradient(135deg, #0077b5, #004e75); width: 100%; max-width: 350px;">
                     🔗 LinkedIn
                 </a>
-                <a href="CV.pdf" target="_blank" class="btn" style="background: var(--primary-color); margin-top: 10px; width: 100%; max-width: 300px;">
+                <a href="CV.pdf" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary-color), #2980b9); margin-top: 15px; width: 100%; max-width: 350px;">
                     📄 Télécharger mon CV
                 </a>
             </div>
@@ -710,7 +811,7 @@
 
             <div class="modal-section">
                 <h4>Compétences Clés</h4>
-                <p id="modal-skills" style="color: var(--primary-color); font-weight: bold;">...</p>
+                <p id="modal-skills" style="color: var(--primary-color); font-weight: bold; font-size: 1.1em;">...</p>
             </div>
         </div>
 
@@ -721,13 +822,13 @@
 </div>
 
 <div id="skillModal" class="modal">
-    <div class="modal-content" style="max-width: 800px;">
+    <div class="modal-content" style="max-width: 950px;">
         <span class="close" onclick="closeSkillModal()">&times;</span>
         <div class="modal-header">
             <h3 id="skill-modal-title">Compétence</h3>
         </div>
         <div class="modal-body" id="skill-modal-projects">
-            </div>
+        </div>
     </div>
 </div>
 
@@ -789,18 +890,14 @@
     }
 
     function closeModal() {
-        // Attention : on n'enlève la classe no-scroll que si la modale compétence n'est pas ouverte dessous
-        // Dans notre cas simple, on peut laisser le scroll bloqué si on ferme "Projet" mais que "Compétence" est encore là.
-        // Simplification : On ferme juste la modale projet.
         projectModal.style.display = "none";
-        
         // Si la modale compétence n'est pas ouverte, on rend le scroll.
         if(document.getElementById('skillModal').style.display !== 'block'){
             document.body.classList.remove('no-scroll');
         }
     }
 
-    // --- MODALE COMPETENCE (CLONAGE DES CARTES) ---
+    // --- MODALE COMPETENCE (AVEC GRILLE ET CLONAGE) ---
     const skillModal = document.getElementById('skillModal');
 
     function openSkillModal(skillElement) {
@@ -819,13 +916,11 @@
         projectIds.forEach(id => {
             const originalCard = document.getElementById(id.trim());
             if (originalCard) {
-                // On clone la carte
+                // On clone la carte pour l'afficher dans la modale
                 const clone = originalCard.cloneNode(true);
                 clone.removeAttribute('id'); // Evite les ID dupliqués
-                clone.style.cursor = "pointer";
                 
-                // On s'assure que le clone ouvre la modale détail
-                // (Le onclick="openModal(this)" est copié avec le clone, donc ça marche tout seul)
+                // Le style CSS s'occupera de la mise en page (grille)
                 
                 modalProjectsContainer.appendChild(clone);
             }
@@ -840,6 +935,7 @@
         skillModal.style.display = "none";
     }
 
+    // Fermeture si clic en dehors
     window.onclick = function(event) {
         if (event.target == projectModal) closeModal();
         if (event.target == skillModal) closeSkillModal();
