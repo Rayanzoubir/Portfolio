@@ -31,7 +31,7 @@
             font-family: 'Roboto', sans-serif;
             background: url('fond.jpeg') no-repeat center center fixed;
             background-size: cover;
-            color: #e0e0e0; /* Texte légèrement gris clair pour moins de contraste dur sur fond noir */
+            color: #e0e0e0;
             line-height: 1.6;
             display: flex;
             flex-direction: column;
@@ -163,14 +163,13 @@
         }
 
         /* --- WRAPPERS (Cadres) --- */
-        /* MODIFICATION DEMANDÉE : Réduire le cadre pour voir la rainure */
         .accueil-wrapper {
-            background: rgba(0, 0, 0, 0.85); /* Plus opaque pour lisibilité */
+            background: rgba(0, 0, 0, 0.85);
             color: #f1f1f1;
-            padding: 40px; /* Padding réduit */
+            padding: 40px;
             border-radius: 15px;
-            max-width: 750px; /* Largeur réduite */
-            margin: 40px auto; /* Marge augmentée pour voir le fond */
+            max-width: 750px;
+            margin: 40px auto;
             text-align: center;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 1);
             border: 1px solid rgba(255,255,255,0.1);
@@ -185,13 +184,12 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
         }
 
-        /* MODIFICATION DEMANDÉE : Phrase bienvenue une ligne et même taille */
         .welcome-text {
             font-family: 'Roboto', sans-serif;
-            font-size: 1.3em; /* Taille uniforme */
+            font-size: 1.3em;
             font-weight: 400;
             margin: 20px 0;
-            white-space: normal; /* Permet le retour ligne sur mobile si besoin, mais reste fluide */
+            white-space: normal;
         }
         
         .stage-mention {
@@ -232,7 +230,19 @@
             color: #fff;
         }
 
-        /* --- PROJETS : ZONE DE SCROLL --- */
+        /* --- PROJETS : STYLES MODIFIÉS --- */
+        
+        /* NOUVEAU : Classe pour le contour noir du titre */
+        .title-shadow {
+            text-shadow: 
+                -2px -2px 0 #000,  
+                 2px -2px 0 #000,
+                -2px  2px 0 #000,
+                 2px  2px 0 #000,
+                 0 0 10px #000; /* Ajoute une ombre floue en plus du contour net */
+            color: #fff;
+        }
+
         .category-section {
             margin-bottom: 40px;
         }
@@ -245,11 +255,15 @@
             padding-left: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            background: rgba(0,0,0,0.5); /* Léger fond pour lisibilité du titre de catégorie */
+            display: inline-block;
+            padding-right: 15px;
         }
 
         .category-title.cyber {
             border-left-color: var(--cyber-color);
             color: var(--cyber-color);
+            background: rgba(0,0,0,0.5);
         }
 
         /* Container scrollable horizontalement */
@@ -259,12 +273,10 @@
             gap: 20px;
             padding-bottom: 20px;
             scroll-behavior: smooth;
-            /* Scrollbar styling for Firefox */
             scrollbar-width: thin;
             scrollbar-color: #555 transparent;
         }
 
-        /* Scrollbar styling for Webkit */
         .projects-scroller::-webkit-scrollbar {
             height: 8px;
         }
@@ -280,7 +292,7 @@
         .project-card {
             background-color: #1a1a1a;
             min-width: 300px;
-            max-width: 300px; /* Fixe la largeur pour forcer le scroll */
+            max-width: 300px;
             padding: 20px;
             border-radius: 10px;
             cursor: pointer;
@@ -313,7 +325,7 @@
             color: #ccc;
             margin-bottom: 15px;
             display: -webkit-box;
-            -webkit-line-clamp: 3; /* Limite le texte à 3 lignes */
+            -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
         }
@@ -367,7 +379,7 @@
         .modal-content {
             background-color: #1e1e1e;
             margin: 5vh auto;
-            padding: 0; /* Padding géré par les sections internes */
+            padding: 0;
             border: 1px solid #444;
             width: 90%;
             max-width: 800px;
@@ -451,30 +463,27 @@
         <div class="accueil-wrapper" style="max-width: 1200px; width: 100%; background: rgba(0,0,0,0.9);">
             <h2>À propos de moi</h2>
             <div class="apropos-container">
-                
                 <div class="apropos-bloc">
                     <h3 style="color: #f1c40f;">🎓 Formation</h3>
                     <p>Je suis en BUT Réseaux et Télécommunications (IUT). Ma formation couvre l’administration système, la cybersécurité (pentest, sécurisation) et le développement. J'apprécie particulièrement l'approche pratique et les mises en situation professionnelles (SAÉ).</p>
                 </div>
-
                 <div class="apropos-bloc">
                     <h3 style="color: #1abc9c;">💻 Veille Technologique</h3>
                     <p>Je suis activement l'actualité Cybersecurity (CVE, failles Zero-day) et Hardware. Je suis curieux de comprendre comment les nouvelles architectures influencent la sécurité des infrastructures.</p>
                 </div>
-
                 <div class="apropos-bloc">
                     <h3 style="color: #e67e22;">🎮 Compétition & Esprit d'équipe</h3>
                     <p>Je pratique l'e-sport (Counter-Strike 2) à un niveau compétitif. Cela m'a appris la communication sous pression, l'élaboration de stratégies en équipe et la prise de décision rapide, des atouts que je transpose dans mes projets.</p>
                 </div>
-
             </div>
         </div>
     </section>
 
     <section id="projets">
         <div style="max-width: 1400px; margin: 0 auto;">
-            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2.5em;">Mes Projets</h2>
-            <p style="text-align: center; margin-bottom: 40px; color: #ccc;">Découvrez mes réalisations classées par domaine d'expertise.</p>
+            
+            <h2 class="title-shadow" style="text-align: center; margin-bottom: 20px; font-size: 2.8em;">Mes Projets</h2>
+            <p class="title-shadow" style="text-align: center; margin-bottom: 50px; font-size: 1.2em; font-weight: bold;">Découvrez mes réalisations classées par domaine d'expertise.</p>
 
             <div class="category-section">
                 <h3 class="category-title cyber">🛡️ Cybersécurité & Développement</h3>
@@ -484,7 +493,9 @@
                          onclick="openModal(this)"
                          data-title="Sécurisation Système Web (PHOTO_ATB)"
                          data-context="Sécurisation complète d'une application web vulnérable utilisée pour l'archivage de photos avioniques."
+                         data-challenge="Le code initial contenait de nombreuses failles critiques (Injections SQL, XSS). La difficulté était de sécuriser l'application sans casser les fonctionnalités existantes utilisées en production."
                          data-tech="Audit de code, implémentation RBAC, hachage de mots de passe, protection XSS/SQLi, Journalisation (Logs)."
+                         data-result="Application renforcée et auditée. Implémentation réussie de la gestion des rôles et des logs pour tracer toutes les actions suspectes."
                          data-skills="Cybersécurité défensive, PHP sécurisé, Gestion des identités."
                          data-link="rapport_securite_PHOTO_ATB.pdf"
                          data-link-text="Voir le rapport de sécurité">
@@ -497,7 +508,9 @@
                          onclick="openModal(this)"
                          data-title="Gestion Photos Avioniques (PHOTO_ATB)"
                          data-context="Développement d'une solution pour Thales permettant la traçabilité des bancs de tests via Raspberry Pi."
+                         data-challenge="Intégrer du matériel spécifique (Raspberry Pi, Pico) avec une interface Web fluide, tout en gérant le stockage local des images."
                          data-tech="HTML/CSS/JS, PHP, SQL, Raspberry Pi, Bash."
+                         data-result="Solution livrée permettant aux opérateurs de prendre et stocker des photos de configuration automatiquement avant chaque test."
                          data-skills="Développement Fullstack, Interaction Hardware/Software, Gestion de projet."
                          data-link="rapport15.docx"
                          data-link-text="Lire le rapport technique">
@@ -510,7 +523,9 @@
                          onclick="openModal(this)"
                          data-title="Portfolio Personnel"
                          data-context="Création d'une identité numérique professionnelle accessible sur tous supports."
+                         data-challenge="Concevoir un site entièrement responsive et interactif en utilisant uniquement du JavaScript natif (Vanilla JS) sans dépendre de frameworks lourds."
                          data-tech="HTML5, CSS3, JavaScript (Vanilla), Git, GitHub Pages."
+                         data-result="Un site rapide, léger, hébergé gratuitement et facile à maintenir via Git."
                          data-skills="Développement Frontend, Design Responsive, Versionning."
                          data-link="https://rayanzoubir.github.io/Portfolio/"
                          data-link-text="Voir le site en ligne">
@@ -519,7 +534,7 @@
                          <span class="read-more">Voir le détail →</span>
                     </div>
 
-                    </div>
+                </div>
             </div>
 
             <div class="category-section">
@@ -530,7 +545,9 @@
                          onclick="openModal(this)"
                          data-title="Architecture Réseau PME Sécurisée"
                          data-context="Conception de A à Z du réseau d'une entreprise avec segmentation et services critiques."
+                         data-challenge="Configurer des règles de pare-feu (ACL) strictes sur le Cisco ASA tout en permettant le bon fonctionnement des services hébergés en DMZ."
                          data-tech="Cisco Packet Tracer, Cisco ASA, VLANs, ACLs, DHCP/DNS, DMZ."
+                         data-result="Simulation fonctionnelle d'un réseau sécurisé, résistant aux accès non autorisés depuis l'extérieur tout en garantissant la connectivité interne."
                          data-skills="Architecture LAN/WAN, Sécurité périmétrique (Firewall), Routage."
                          data-link="sae21.pkt"
                          data-link-text="Télécharger le fichier .pkt">
@@ -539,7 +556,7 @@
                          <span class="read-more">Voir le détail →</span>
                     </div>
 
-                     </div>
+                </div>
             </div>
 
             <div class="category-section">
@@ -550,7 +567,9 @@
                          onclick="openModal(this)"
                          data-title="Analyse Signal & Support de Trans."
                          data-context="Comparaison entre modèles théoriques et mesures réelles sur un support de transmission physique."
+                         data-challenge="Interpréter les écarts entre la théorie mathématique et les mesures physiques parfois bruitées."
                          data-tech="Oscilloscope, Générateur de fréquences, Octave (Matlab)."
+                         data-result="Validation du modèle théorique de l'atténuation du câble coaxial avec une marge d'erreur minime."
                          data-skills="Métrologie, Traitement du signal, Modélisation mathématique."
                          data-link="Zoubir_Rayan-SAE13-Rapport.pdf"
                          data-link-text="Voir l'étude complète">
@@ -563,7 +582,9 @@
                      onclick="openModal(this)"
                      data-title="Sensibilisation E-Réputation"
                      data-context="Intervention pédagogique auprès de collégiens sur les dangers du numérique."
+                     data-challenge="Adapter un discours technique (RGPD, traces numériques) pour le rendre compréhensible et intéressant pour un public jeune."
                      data-tech="Supports visuels, Kahoot, Pédagogie active."
+                     data-result="Séance animée avec succès, participation active des élèves via le quiz interactif."
                      data-skills="Communication orale, Vulgarisation technique, Gestion de groupe."
                      data-link="E-reputation.pdf"
                      data-link-text="Voir le support">
@@ -648,9 +669,20 @@
         </div>
 
         <div class="modal-body">
+            
             <div class="modal-section">
-                <h4>Contexte & Objectifs</h4>
+                <h4>Contexte</h4>
                 <p id="modal-context">...</p>
+            </div>
+
+            <div class="modal-section">
+                <h4>⚠️ Challenge / Difficulté</h4>
+                <p id="modal-challenge">...</p>
+            </div>
+
+            <div class="modal-section">
+                <h4>✅ Résultat / Impact</h4>
+                <p id="modal-result">...</p>
             </div>
             
             <div class="modal-section">
@@ -691,7 +723,7 @@
         const target = document.getElementById(id);
         if (target) {
             target.classList.add('active');
-            window.scrollTo(0, 0); // Remonter en haut de page
+            window.scrollTo(0, 0); 
         }
         if (navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
@@ -705,21 +737,23 @@
         hamburgerBtn.classList.toggle('active');
     });
 
-    // --- MODALE PROJET (Nouvelle logique de données) ---
+    // --- MODALE PROJET (Mise à jour avec Challenge et Result) ---
     const projectModal = document.getElementById('projectModal');
 
     function openModal(element) {
-        // Récupération des données data-*
         const title = element.getAttribute('data-title');
         const context = element.getAttribute('data-context');
+        const challenge = element.getAttribute('data-challenge'); // Nouveau
+        const result = element.getAttribute('data-result');       // Nouveau
         const tech = element.getAttribute('data-tech');
         const skills = element.getAttribute('data-skills');
         const link = element.getAttribute('data-link');
         const linkText = element.getAttribute('data-link-text');
 
-        // Injection dans le HTML
         document.getElementById('modal-title').innerText = title;
         document.getElementById('modal-context').innerText = context;
+        document.getElementById('modal-challenge').innerText = challenge; // Nouveau
+        document.getElementById('modal-result').innerText = result;       // Nouveau
         document.getElementById('modal-tech').innerText = tech;
         document.getElementById('modal-skills').innerText = skills;
         
@@ -746,10 +780,9 @@
 
     function openSkillModal(skillElement) {
         const skillTitle = skillElement.getAttribute('data-skill-title');
-        // Vérification si des projets sont liés
         const projectIdsRaw = skillElement.getAttribute('data-project-ids');
         
-        if (!projectIdsRaw) return; // Si pas de projets liés, on n'ouvre pas
+        if (!projectIdsRaw) return;
 
         const projectIds = projectIdsRaw.split(',');
         const modalTitle = document.getElementById('skill-modal-title');
@@ -759,13 +792,6 @@
         modalProjectsContainer.innerHTML = '<p style="margin-bottom:10px; color:#aaa;">Projets utilisant cette compétence :</p>';
 
         projectIds.forEach(id => {
-            // Recherche du titre du projet dans les cartes existantes
-            // Note: Comme on a changé la structure HTML, on ne peut plus chercher par ID simple facilement
-            // On va chercher dans le DOM les éléments qui contiennent le titre si possible, 
-            // MAIS pour faire simple ici, je recommande de mettre des ID uniques sur les cartes projets si on veut garder cette fonctionnalité précise.
-            // Pour l'instant, je vais afficher un message générique ou désactiver si trop complexe sans ID.
-            
-            // SIMPLIFICATION : Je crée juste un lien textuel pour l'instant
             const projectLink = document.createElement('div');
             projectLink.className = 'skill-project-card';
             projectLink.style.padding = "10px";
@@ -785,7 +811,6 @@
         skillModal.style.display = "none";
     }
 
-    // Fermeture au clic extérieur
     window.onclick = function(event) {
         if (event.target == projectModal) closeModal();
         if (event.target == skillModal) closeSkillModal();
