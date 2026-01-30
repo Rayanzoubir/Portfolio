@@ -3,19 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio R&T - Zoubir Rayan</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <title>Portfolio [R&T] - Zoubir Rayan</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            /* Palette Cyber-Tech */
+            --bg-deep: #050a10;
+            --bg-card: rgba(16, 24, 39, 0.8);
+            --bg-glass: rgba(10, 15, 30, 0.95);
+            
+            --primary: #00f3ff; /* Cyan Néon - Réseau/Tech */
+            --secondary: #bc13fe; /* Violet Néon - Cyber/Code */
+            --text-main: #e2e8f0;
+            --text-muted: #94a3b8;
+            
             --nav-height: 70px;
-            --primary-color: #3498db; /* Bleu Tech */
-            --cyber-color: #e74c3c;   /* Rouge Cyber */
-            --telecom-color: #2ecc71; /* Vert Telecom */
-            --bg-dark: #0f0f0f;
-            --bg-card: rgba(30, 30, 30, 0.6);
-            --glass-bg: rgba(20, 20, 20, 0.85);
-            --text-main: #ecf0f1;
-            --text-muted: #bdc3c7;
         }
 
         * {
@@ -29,44 +31,52 @@
             scroll-behavior: smooth;
         }
 
-        .no-scroll {
-            overflow: hidden;
-        }
+        .no-scroll { overflow: hidden; }
 
         body {
-            font-family: 'Roboto', sans-serif;
-            background: url('fond.jpeg') no-repeat center center fixed;
-            background-size: cover;
-            /* Ajout d'un overlay sombre pour lisibilité si l'image est claire */
-            background-color: var(--bg-dark); 
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-deep);
             color: var(--text-main);
             line-height: 1.6;
             display: flex;
             flex-direction: column;
             min-height: 100vh;
+            /* Gestion du fond */
+            background-image: linear-gradient(rgba(5, 10, 16, 0.9), rgba(5, 10, 16, 0.95)), url('fond.jpeg');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        /* Effet de grille "Matrix/Réseau" subtil en arrière-plan */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px), 
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* --- TYPOGRAPHIE TERMINAL --- */
+        h1, h2, h3, .mono-font, nav button {
+            font-family: 'Fira Code', monospace;
         }
 
         /* --- SCROLLBAR PERSONNALISÉE --- */
-        ::-webkit-scrollbar {
-            width: 10px;
-            height: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #1a1a1a;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #444;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--primary-color);
-        }
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--primary); }
 
-        /* --- NAVIGATION (Style Glassmorphism) --- */
+        /* --- NAVIGATION --- */
         nav {
-            background-color: rgba(0, 0, 0, 0.7);
-            backdrop-filter: blur(10px); /* Effet de flou moderne */
-            -webkit-backdrop-filter: blur(10px);
+            background: rgba(5, 10, 16, 0.8);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0, 243, 255, 0.1);
             height: var(--nav-height);
             padding: 0 20px;
             display: flex;
@@ -75,48 +85,29 @@
             position: sticky;
             top: 0;
             z-index: 1000;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            transition: all 0.3s ease;
         }
 
-        #nav-links {
-            display: flex;
-            gap: 25px;
-        }
+        #nav-links { display: flex; gap: 15px; }
 
         nav button {
             background: transparent;
-            color: #fff;
-            border: 2px solid transparent;
+            color: var(--text-muted);
+            border: 1px solid transparent;
             cursor: pointer;
-            font-size: 1.05em;
-            font-weight: 500;
+            font-size: 0.95em;
             padding: 8px 16px;
-            border-radius: 25px;
-            transition: all 0.4s ease;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
         }
 
-        nav button::before {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-
-        nav button:hover {
-            color: var(--primary-color);
+        nav button:hover, nav button.active-link {
+            color: var(--primary);
+            text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
         }
         
-        nav button:hover::before {
-            width: 100%;
+        /* Petit curseur clignotant au survol */
+        nav button:hover::after {
+            content: '_';
+            animation: blink 1s infinite;
         }
 
         /* --- HAMBURGER --- */
@@ -131,12 +122,12 @@
 
         #hamburger-btn .bar {
             display: block;
-            width: 25px;
-            height: 3px;
-            margin: 5px auto;
-            background-color: #fff;
+            width: 30px;
+            height: 2px;
+            margin: 6px auto;
+            background-color: var(--primary);
             transition: all 0.3s ease-in-out;
-            border-radius: 2px;
+            box-shadow: 0 0 5px var(--primary);
         }
 
         @media (max-width: 768px) {
@@ -147,23 +138,18 @@
             #hamburger-btn.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
 
             #nav-links {
-                position: fixed;
-                left: -100%;
-                top: 0;
+                position: fixed; left: -100%; top: 0;
                 flex-direction: column;
-                background-color: rgba(0,0,0,0.95);
-                backdrop-filter: blur(15px);
-                width: 100%;
-                height: 100vh;
+                background: var(--bg-deep);
+                width: 100%; height: 100vh;
                 justify-content: center;
                 transition: left 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                padding: 0;
+                border-right: 1px solid var(--primary);
             }
             #nav-links.active { left: 0; }
-            #nav-links button { width: auto; border: none; font-size: 1.5em; margin: 15px 0; }
         }
 
-        /* --- CONTAINER GLOBAL --- */
+        /* --- CONTAINER --- */
         .container {
             flex: 1;
             width: 100%;
@@ -179,363 +165,262 @@
 
         section.active {
             display: block;
-            animation: fadeIn Up 0.8s ease-out;
+            animation: glitchFadeIn 0.5s ease-out;
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes glitchFadeIn {
+            0% { opacity: 0; transform: translateY(10px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- BOUTONS D'ACTION --- */
+        /* --- BOUTONS CYBER --- */
         .btn {
-            background: linear-gradient(135deg, var(--primary-color), #2980b9);
-            border: none;
-            color: #fff;
+            background: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
             padding: 12px 30px;
-            border-radius: 50px;
+            font-family: 'Fira Code', monospace;
             text-decoration: none;
             display: inline-block;
             margin-top: 20px;
             font-weight: bold;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
-            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            transition: all 0.3s;
+            /* Forme coupée sur le coin */
+            clip-path: polygon(10px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, 0 100%, 0 10px);
         }
 
         .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.6);
+            background: rgba(0, 243, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 243, 255, 0.4);
+            transform: translateY(-2px);
+            text-shadow: 0 0 5px var(--primary);
         }
 
-        /* --- WRAPPERS (Cadres) --- */
+        /* --- CADRES / WRAPPERS --- */
         .accueil-wrapper {
             background: var(--bg-card);
-            backdrop-filter: blur(5px);
-            color: var(--text-main);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 50px;
-            border-radius: 20px;
-            max-width: 800px;
+            max-width: 900px;
             margin: 20px auto;
             text-align: center;
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-            border: 1px solid rgba(255,255,255,0.05);
+            position: relative;
+            /* Petite ligne décorative en haut */
+            border-top: 1px solid var(--primary);
         }
+        
+        /* Décoration coins */
+        .accueil-wrapper::before, .accueil-wrapper::after {
+            content: ''; position: absolute; width: 10px; height: 10px;
+            border: 1px solid var(--text-muted); transition: 0.3s;
+        }
+        .accueil-wrapper::before { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+        .accueil-wrapper::after { bottom: -1px; right: -1px; border-left: none; border-top: none; }
 
         .photo-container img {
-            width: 160px;
-            height: 160px;
+            width: 160px; height: 160px;
             object-fit: cover;
-            border-radius: 50%;
-            border: 4px solid var(--primary-color);
-            box-shadow: 0 0 20px rgba(52, 152, 219, 0.5);
-            transition: transform 0.5s ease;
+            border-radius: 50%; /* Garde le rond, c'est mieux pour les photos humaines */
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 25px rgba(0, 243, 255, 0.2);
+            filter: grayscale(20%); /* Petit effet désaturé stylé */
+            transition: 0.5s;
         }
         
         .photo-container img:hover {
-            transform: scale(1.05) rotate(5deg);
+            filter: grayscale(0%);
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(0, 243, 255, 0.5);
         }
 
-        .welcome-text {
-            font-size: 1.4em;
-            margin: 25px 0;
-            font-weight: 300;
+        /* Effet machine à écrire pour le nom */
+        .typing-effect {
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid var(--primary);
+            animation: typing 3.5s steps(30, end), blink-caret 0.75s step-end infinite;
+            font-size: 1.6em;
+            color: #fff;
+            margin-bottom: 20px;
         }
+
+        @keyframes typing { from { width: 0 } to { width: 100% } }
+        @keyframes blink-caret { from, to { border-color: transparent } 50% { border-color: var(--primary) } }
         
         .stage-mention {
-            background: rgba(52, 152, 219, 0.1);
-            color: var(--primary-color);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 1.1em;
             display: inline-block;
+            background: rgba(188, 19, 254, 0.1);
+            color: var(--secondary);
+            border: 1px solid rgba(188, 19, 254, 0.3);
+            padding: 8px 15px;
+            font-size: 0.9em;
             margin-bottom: 25px;
-            border: 1px solid rgba(52, 152, 219, 0.3);
+            font-family: 'Fira Code', monospace;
         }
 
         /* --- BLOCS A PROPOS --- */
         .apropos-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 25px;
-            justify-content: center;
-            margin-top: 30px;
+            display: flex; flex-wrap: wrap; gap: 25px; justify-content: center; margin-top: 30px;
         }
 
         .apropos-bloc {
-            background-color: rgba(255,255,255,0.03);
+            background: linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 100%);
             padding: 30px;
-            border-radius: 15px;
             flex: 1 1 300px;
             text-align: left;
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.3s, background-color 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            border-left: 2px solid var(--text-muted);
+            transition: 0.3s;
         }
         
         .apropos-bloc:hover {
-            background-color: rgba(255,255,255,0.07);
-            transform: translateY(-10px);
+            border-left-color: var(--primary);
+            background: linear-gradient(180deg, rgba(0, 243, 255, 0.05) 0%, rgba(0,0,0,0) 100%);
+            transform: translateX(5px);
         }
 
-        .apropos-bloc h3 { margin-bottom: 15px; font-size: 1.5em; }
-
-        /* --- PROJETS : STYLES VISUELS --- */
-        
-        .title-shadow {
-            text-shadow: 0 4px 10px rgba(0,0,0,0.8);
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        .category-section {
-            margin-bottom: 50px;
-            position: relative;
-        }
-
+        /* --- PROJETS --- */
         .category-title {
-            font-size: 1.5em;
-            margin-bottom: 20px;
-            color: #fff;
-            background: linear-gradient(90deg, rgba(0,0,0,0.8), transparent);
-            padding: 10px 20px;
-            border-left: 5px solid var(--primary-color);
-            border-radius: 0 50px 50px 0;
-            display: inline-block;
+            font-size: 1.4em; margin-bottom: 20px;
+            color: var(--text-main);
+            padding-left: 15px;
+            border-left: 4px solid var(--primary);
         }
-
-        .category-title.cyber { border-color: var(--cyber-color); }
+        .category-title.cyber { border-color: var(--secondary); color: #fff; text-shadow: 0 0 10px rgba(188, 19, 254, 0.5); }
 
         .projects-scroller {
-            display: flex;
-            overflow-x: auto;
-            gap: 25px;
-            padding: 20px 5px; /* Padding pour l'ombre hover */
-            scroll-behavior: smooth;
+            display: flex; overflow-x: auto; gap: 25px; padding: 20px 5px;
         }
         
-        /* Masquer la scrollbar par défaut pour un look cleaner, mais garder scrollable */
-        .projects-scroller::-webkit-scrollbar { height: 6px; }
-        .projects-scroller::-webkit-scrollbar-track { background: transparent; }
-        .projects-scroller::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
-
         .project-card {
-            background: linear-gradient(145deg, #1e1e1e, #141414);
-            min-width: 300px;
-            max-width: 300px;
+            background: #0e121b;
+            min-width: 300px; max-width: 300px;
             padding: 25px;
-            border-radius: 15px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Effet ressort */
-            border: 1px solid rgba(255,255,255,0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            transition: all 0.3s;
+            border: 1px solid #1e293b;
+            display: flex; flex-direction: column; justify-content: space-between;
             position: relative;
-            overflow: hidden;
+            /* Clip path pour le coin coupé */
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 20px 100%, 0 calc(100% - 20px));
         }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 4px;
-            background: var(--primary-color);
-            transition: height 0.3s ease;
-        }
-        
-        .project-card.cyber-card::before { background: var(--cyber-color); }
 
         .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.6);
-            border-color: rgba(255,255,255,0.2);
-        }
-
-        .project-card.cyber-card:hover {
-            box-shadow: 0 15px 30px rgba(231, 76, 60, 0.25);
-        }
-
-        .project-card h3 {
-            font-size: 1.3em;
-            margin-bottom: 12px;
-            color: #fff;
-            margin-top: 10px;
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
         
-        .project-card p {
-            font-size: 0.95em;
-            color: var(--text-muted);
-            margin-bottom: 20px;
-            line-height: 1.5;
-        }
+        .project-card.cyber-card:hover { border-color: var(--secondary); }
 
+        .project-card h3 { 
+            font-size: 1.1em; color: #fff; margin-bottom: 10px; 
+            border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px;
+        }
+        
         .read-more {
-            font-size: 0.9em;
-            color: var(--primary-color);
-            font-weight: bold;
-            margin-top: auto;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            transition: gap 0.3s;
+            font-size: 0.85em; color: var(--primary); font-family: 'Fira Code', monospace;
+            margin-top: auto; display: block; text-align: right;
         }
-        
-        .project-card:hover .read-more { gap: 10px; }
+        .cyber-card .read-more { color: var(--secondary); }
 
         /* --- COMPÉTENCES --- */
         .skill-category {
             margin-bottom: 30px;
-            background: rgba(20, 20, 20, 0.8);
+            background: rgba(15, 20, 30, 0.6);
+            border: 1px solid rgba(255,255,255,0.05);
             padding: 25px;
-            border-radius: 15px;
-            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
         }
         
         .clickable-skill {
             display: inline-block;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #ddd;
-            padding: 8px 16px;
-            margin: 5px 3px;
-            border-radius: 25px;
-            font-size: 0.95em;
-            cursor: pointer;
-            transition: all 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .clickable-skill.cyber-skill {
-            border-color: rgba(231, 76, 60, 0.3);
-            color: #ffcccc;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--text-muted);
+            padding: 6px 12px; margin: 5px 3px;
+            font-size: 0.9em; font-family: 'Fira Code', monospace;
+            cursor: pointer; transition: all 0.2s;
+            border: 1px solid transparent;
         }
 
         .clickable-skill:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-            border-color: var(--primary-color);
-            transform: scale(1.05);
-            box-shadow: 0 0 15px rgba(52, 152, 219, 0.4);
+            color: var(--bg-deep);
+            background: var(--primary);
+            box-shadow: 0 0 15px var(--primary);
+            border-color: var(--primary);
         }
         
         .clickable-skill.cyber-skill:hover {
-            background-color: var(--cyber-color);
-            border-color: var(--cyber-color);
-            box-shadow: 0 0 15px rgba(231, 76, 60, 0.4);
+            background: var(--secondary);
+            box-shadow: 0 0 15px var(--secondary);
+            border-color: var(--secondary);
         }
 
-        /* --- MODALES & ALIGNEMENT GRILLE --- */
-        
+        /* --- MODALES --- */
         .modal { 
-            display: none; 
-            position: fixed; 
-            z-index: 2000; 
-            left: 0; top: 0; 
-            width: 100%; height: 100%; 
-            overflow: auto; 
-            background-color: rgba(0,0,0,0.85); 
-            backdrop-filter: blur(8px); 
+            display: none; position: fixed; z-index: 2000; left: 0; top: 0; width: 100%; height: 100%; 
+            background: rgba(5, 8, 15, 0.9); backdrop-filter: blur(8px); 
         }
         
-        #projectModal { z-index: 2010; } /* Toujours au-dessus */
+        #projectModal { z-index: 2010; }
 
         .modal-content {
-            background: linear-gradient(160deg, #222, #111);
+            background: #0f141f;
             margin: 5vh auto;
-            border: 1px solid #333;
-            width: 90%;
-            max-width: 900px;
-            border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.9);
+            border: 1px solid #334155;
+            width: 90%; max-width: 900px;
+            box-shadow: 0 0 50px rgba(0,0,0,0.8);
             position: relative;
-            animation: slideIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            display: flex;
-            flex-direction: column;
+            animation: modalOpen 0.3s ease-out;
+            display: flex; flex-direction: column;
+            /* Effet terminal window */
         }
 
+        @keyframes modalOpen { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
         .modal-header {
-            padding: 25px 30px;
-            border-bottom: 1px solid #333;
-            background: rgba(255,255,255,0.03);
-            border-radius: 20px 20px 0 0;
+            padding: 15px 30px;
+            background: #1e293b;
+            border-bottom: 1px solid #334155;
+            display: flex; align-items: center; justify-content: space-between;
         }
 
         .modal-header h3 { 
-            font-size: 2em; 
-            background: linear-gradient(90deg, var(--primary-color), #fff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin: 0; 
+            font-size: 1.2em; color: var(--primary); margin: 0; 
+            display: flex; align-items: center; gap: 10px;
+        }
+        /* Point vert style terminal */
+        .modal-header h3::before {
+            content: ''; display: inline-block; width: 10px; height: 10px;
+            background: #2ecc71; border-radius: 50%; box-shadow: 0 0 5px #2ecc71;
         }
 
-        .modal-body { padding: 40px; overflow-y: auto; max-height: 70vh; }
+        .modal-body { padding: 40px; overflow-y: auto; max-height: 70vh; color: #cbd5e1; }
         
         .modal-section { margin-bottom: 30px; }
         .modal-section h4 { 
-            color: var(--text-muted); 
-            text-transform: uppercase; 
-            font-size: 0.9em; 
-            letter-spacing: 1.5px; 
-            margin-bottom: 12px; 
-            border-bottom: 1px solid #444; 
-            padding-bottom: 8px; 
-            display: inline-block;
+            color: var(--text-muted); font-family: 'Fira Code', monospace;
+            font-size: 0.9em; margin-bottom: 10px; border-bottom: 1px dashed #334155; 
+            padding-bottom: 5px; display: inline-block;
         }
-        .modal-section p { color: #eee; font-size: 1.1em; line-height: 1.7; }
         
-        .modal-footer {
-            padding: 20px 30px;
-            border-top: 1px solid #333;
-            text-align: right;
-            background: rgba(0,0,0,0.2);
-            border-radius: 0 0 20px 20px;
-        }
+        .close { color: #64748b; font-size: 28px; cursor: pointer; transition: 0.3s; }
+        .close:hover { color: #ef4444; }
 
-        .close { 
-            color: #fff; 
-            position: absolute; 
-            top: 20px; right: 25px; 
-            font-size: 35px; 
-            font-weight: 300; 
-            cursor: pointer; 
-            transition: 0.3s; 
-            z-index: 10; 
-            line-height: 20px;
-        }
-        .close:hover { color: var(--cyber-color); transform: rotate(90deg); }
-
-        /* --- GRILLE POUR LA LISTE DES PROJETS DANS COMPETENCES --- */
+        /* Grille Projets dans Compétences */
         #skill-modal-projects {
-            display: flex;
-            flex-wrap: wrap;        /* Important : passage à la ligne */
-            gap: 25px;              /* Espace entre les cartes */
-            justify-content: center; /* Centrage horizontal */
-            padding-top: 20px;
+            display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; padding-top: 20px;
         }
-
-        /* Force les cartes à avoir une taille fixe dans la modale */
         #skill-modal-projects .project-card {
-            width: 280px;          
-            min-width: 280px;      
-            max-width: 280px;
-            flex: 0 0 auto;        
-            margin: 0;
-            background: #1a1a1a;   /* Fond légèrement plus clair dans la modale */
+            width: 280px; min-width: 280px; max-width: 280px; margin: 0;
+            background: #161e2e;
         }
 
         footer { 
-            background-color: #050505; 
-            color: #666; 
-            text-align: center; 
-            padding: 30px; 
-            margin-top: auto; 
-            font-size: 0.9em; 
-            border-top: 1px solid #222;
+            background: #020408; color: #475569; text-align: center; 
+            padding: 30px; margin-top: auto; font-family: 'Fira Code', monospace; font-size: 0.8em;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
-
-        @keyframes slideIn { from {transform: translateY(50px) scale(0.9); opacity: 0;} to {transform: translateY(0) scale(1); opacity: 1;} }
     </style>
 </head>
 
@@ -543,11 +428,11 @@
 
 <nav>
     <div id="nav-links">
-        <button onclick="showSection('accueil')">Accueil</button>
-        <button onclick="showSection('apropos')">À propos</button>
-        <button onclick="showSection('projets')">Projets</button>
-        <button onclick="showSection('competences')">Compétences</button>
-        <button onclick="showSection('contact')">Contact</button>
+        <button onclick="showSection('accueil')">./Accueil</button>
+        <button onclick="showSection('apropos')">./À_propos</button>
+        <button onclick="showSection('projets')">./Projets</button>
+        <button onclick="showSection('competences')">./Compétences</button>
+        <button onclick="showSection('contact')">./Contact</button>
     </div>
     <button id="hamburger-btn">
         <span class="bar"></span>
@@ -563,36 +448,39 @@
                 <img src="pdp.png" alt="Photo de Zoubir Rayan">
             </div>
             
-            <p class="welcome-text">
-                Je m'appelle <strong>Zoubir Rayan</strong>, bienvenue sur mon portfolio professionnel.
+            <div style="margin-top: 20px;">
+                <span class="typing-effect">Zoubir Rayan</span>
+            </div>
+            
+            <p style="font-size: 1.1em; color: var(--text-muted); margin-bottom: 20px;">
+                Bienvenue dans mon espace numérique.
             </p>
 
-            <span class="stage-mention">🚀 Étudiant BUT R&T 2ème année • Recherche stage 10 semaines (Cyber/Réseaux)</span>
+            <span class="stage-mention">&lt;Status: Recherche stage 10 semaines (Cyber/Réseaux) /&gt;</span>
 
-            <p style="font-size: 1.1em; opacity: 0.9; max-width: 600px; margin: 0 auto;">
-                Passionné par la <strong>sécurité des systèmes d'information</strong> et l'architecture réseau. 
-                J'aime construire, sécuriser et comprendre comment les choses fonctionnent.
+            <p style="max-width: 600px; margin: 0 auto; color: #e2e8f0;">
+                Étudiant en 2ème année de BUT R&T. Passionné par l'architecture réseau, le durcissement de systèmes et l'investigation numérique.
             </p>
 
-            <a href="#" class="btn" onclick="showSection('projets')">Explorer mes projets</a>
+            <a href="#" class="btn" onclick="showSection('projets')">Initialiser_Projets.exe</a>
         </div>
     </section>
 
     <section id="apropos">
-        <div class="accueil-wrapper" style="max-width: 1200px; width: 100%; background: rgba(20,20,20,0.9);">
-            <h2 class="title-shadow" style="font-size: 2.5em; margin-bottom: 20px;">À propos de moi</h2>
+        <div class="accueil-wrapper" style="max-width: 1200px; width: 100%;">
+            <h2 style="color: var(--primary); margin-bottom: 30px; text-shadow: 0 0 10px rgba(0,243,255,0.3);">_WHOAMI</h2>
             <div class="apropos-container">
                 <div class="apropos-bloc">
-                    <h3 style="color: #f1c40f;">🎓 Formation</h3>
-                    <p>Je suis en BUT Réseaux et Télécommunications (IUT). Ma formation couvre l’administration système, la cybersécurité (pentest, sécurisation) et le développement. J'apprécie particulièrement l'approche pratique et les mises en situation professionnelles (SAÉ).</p>
+                    <h3 style="color: #fff;">🎓 Formation</h3>
+                    <p>BUT Réseaux & Télécoms. Cursus axé sur la maîtrise des infrastructures (Cisco, Linux) et la sécurité défensive (Blue Team, Hardening). J'aime la rigueur technique qu'exige ce métier.</p>
                 </div>
                 <div class="apropos-bloc">
-                    <h3 style="color: #1abc9c;">💻 Veille Technologique</h3>
-                    <p>Je suis activement l'actualité Cybersecurity (CVE, failles Zero-day) et Hardware. Je suis curieux de comprendre comment les nouvelles architectures influencent la sécurité des infrastructures.</p>
+                    <h3 style="color: #fff;">💾 Veille Tech</h3>
+                    <p>Je surveille les CVE et les nouvelles architectures Zero Trust. Comprendre l'attaque pour mieux construire la défense est ma philosophie d'apprentissage.</p>
                 </div>
                 <div class="apropos-bloc">
-                    <h3 style="color: #e67e22;">🎮 Compétition & Esprit d'équipe</h3>
-                    <p>Je pratique l'e-sport (Counter-Strike 2) à un niveau compétitif. Cela m'a appris la communication sous pression, l'élaboration de stratégies en équipe et la prise de décision rapide, des atouts que je transpose dans mes projets.</p>
+                    <h3 style="color: #fff;">🕹️ Esprit Compétitif</h3>
+                    <p>Joueur CS2. Le travail d'équipe, la communication précise sous stress et la stratégie sont des compétences que j'applique aussi bien in-game que dans un projet IT.</p>
                 </div>
             </div>
         </div>
@@ -601,115 +489,115 @@
     <section id="projets">
         <div style="max-width: 1400px; margin: 0 auto;">
             
-            <h2 class="title-shadow" style="text-align: center; margin-bottom: 10px; font-size: 3em;">Mes Projets</h2>
-            <p style="text-align: center; margin-bottom: 60px; font-size: 1.2em; color: #aaa;">Une sélection de mes réalisations techniques.</p>
+            <h2 style="text-align: center; margin-bottom: 10px; font-size: 2.5em; color: #fff;">_PORTFOLIO_ITEMS</h2>
+            <p style="text-align: center; margin-bottom: 60px; font-family: 'Fira Code', monospace; color: var(--text-muted);">Scanning database...</p>
 
             <div class="category-section">
-                <h3 class="category-title cyber">🛡️ Cybersécurité & Développement</h3>
+                <h3 class="category-title cyber">01 // Cybersécurité & Dev</h3>
                 <div class="projects-scroller">
                     
                     <div id="projet6" class="project-card cyber-card"
                          onclick="openModal(this)"
                          data-title="Sécurisation Système Web (PHOTO_ATB)"
                          data-context="Sécurisation complète d'une application web vulnérable utilisée pour l'archivage de photos avioniques."
-                         data-challenge="Le code initial contenait de nombreuses failles (SQLi, XSS). La difficulté était de sécuriser l'application sans casser les fonctionnalités de production."
-                         data-tech="Audit de code, implémentation RBAC, hachage de mots de passe, protection XSS/SQLi, Journalisation (Logs)."
-                         data-result="Application renforcée et auditée. Gestion des rôles et logs fonctionnels pour tracer toutes les actions."
-                         data-skills="Cybersécurité défensive, PHP sécurisé, Gestion des identités."
+                         data-challenge="Sécuriser l'existant sans casser la production (Legacy Code)."
+                         data-tech="Audit de code, RBAC, Hachage (Argon2), Logs, Sanitization."
+                         data-result="Zéro faille critique après audit final. Traçabilité complète implémentée."
+                         data-skills="SecOps, PHP sécurisé, Gestion des identités."
                          data-link="rapport_securite_PHOTO_ATB.pdf"
-                         data-link-text="Voir le rapport de sécurité">
-                         <h3 style="color:#e74c3c">🔐 Sécurisation Web</h3>
-                         <p>Durcissement d'une application : lutte contre les injections SQL, XSS, gestion des droits et logs de sécurité.</p>
-                         <span class="read-more">Voir le détail →</span>
+                         data-link-text="[DOWNLOAD_REPORT]">
+                         <h3 style="color:var(--secondary)">🔐 Sécurisation Web</h3>
+                         <p>Durcissement d'application : Patch failles SQLi/XSS, implémentation RBAC et Logs.</p>
+                         <span class="read-more">>> ACCESS_DATA</span>
                     </div>
 
                     <div id="projet1" class="project-card"
                          onclick="openModal(this)"
                          data-title="Gestion Photos Avioniques (PHOTO_ATB)"
-                         data-context="Développement d'une solution pour Thales permettant la traçabilité des bancs de tests via Raspberry Pi."
-                         data-challenge="Intégrer du matériel spécifique (Raspberry Pi, Pico) avec une interface Web fluide, tout en gérant le stockage local."
-                         data-tech="HTML/CSS/JS, PHP, SQL, Raspberry Pi, Bash."
-                         data-result="Solution livrée permettant aux opérateurs de prendre et stocker des photos de configuration automatiquement."
-                         data-skills="Développement Fullstack, Interaction Hardware/Software, Gestion de projet."
+                         data-context="Développement pour Thales : traçabilité des bancs de tests via Raspberry Pi."
+                         data-challenge="Interaction bas niveau (Raspberry/Pico) avec interface Web moderne."
+                         data-tech="HTML/JS, PHP, SQL, Linux (Bash), Hardware IoT."
+                         data-result="Outil déployé et fonctionnel. Gain de temps pour les opérateurs."
+                         data-skills="Fullstack, IoT, Linux Admin."
                          data-link="rapport15.docx"
-                         data-link-text="Lire le rapport technique">
-                         <h3 style="color:#3498db">📸 App Web & IoT</h3>
-                         <p>Système complet d'archivage photo sur Raspberry Pi avec interface web et base de données.</p>
-                         <span class="read-more">Voir le détail →</span>
+                         data-link-text="[READ_DOCS]">
+                         <h3 style="color:var(--primary)">📸 Web & IoT</h3>
+                         <p>Système complet d'archivage sur Raspberry Pi avec interface web et DB.</p>
+                         <span class="read-more">>> ACCESS_DATA</span>
                     </div>
 
                     <div id="projet5" class="project-card"
                          onclick="openModal(this)"
                          data-title="Portfolio Personnel"
-                         data-context="Création d'une identité numérique professionnelle accessible sur tous supports."
-                         data-challenge="Concevoir un site entièrement responsive et interactif en JavaScript natif (Vanilla JS) sans framework."
-                         data-tech="HTML5, CSS3, JavaScript (Vanilla), Git, GitHub Pages."
-                         data-result="Un site rapide, léger, hébergé gratuitement et facile à maintenir via Git."
-                         data-skills="Développement Frontend, Design Responsive, Versionning."
+                         data-context="Identité numérique professionnelle."
+                         data-challenge="Zéro framework. 100% Vanilla JS/CSS pour la performance."
+                         data-tech="HTML5, CSS3, JS, Git, GitHub Actions."
+                         data-result="Site performant, responsive et facile à maintenir."
+                         data-skills="Frontend, GitOps, Design."
                          data-link="https://rayanzoubir.github.io/Portfolio/"
-                         data-link-text="Voir le site en ligne">
-                         <h3 style="color:#1abc9c">💼 Portfolio Web</h3>
-                         <p>Site vitrine responsive développé sans framework pour maîtriser les bases du web.</p>
-                         <span class="read-more">Voir le détail →</span>
+                         data-link-text="[VIEW_ONLINE]">
+                         <h3 style="color:var(--primary)">💼 Portfolio V1</h3>
+                         <p>Développement "from scratch" pour maîtriser les bases du web.</p>
+                         <span class="read-more">>> ACCESS_DATA</span>
                     </div>
 
                 </div>
             </div>
 
             <div class="category-section">
-                <h3 class="category-title">🌐 Infrastructure & Réseaux</h3>
+                <h3 class="category-title">02 // Infrastructure</h3>
                 <div class="projects-scroller">
                     
                     <div id="projet4" class="project-card"
                          onclick="openModal(this)"
                          data-title="Architecture Réseau PME Sécurisée"
-                         data-context="Conception de A à Z du réseau d'une entreprise avec segmentation et services critiques."
-                         data-challenge="Configurer des règles de pare-feu (ACL) strictes sur le Cisco ASA tout en permettant le fonctionnement de la DMZ."
-                         data-tech="Cisco Packet Tracer, Cisco ASA, VLANs, ACLs, DHCP/DNS, DMZ."
-                         data-result="Simulation fonctionnelle d'un réseau sécurisé, résistant aux accès non autorisés et segmenté."
-                         data-skills="Architecture LAN/WAN, Sécurité périmétrique (Firewall), Routage."
+                         data-context="Conception LAN/WAN d'entreprise avec segmentation."
+                         data-challenge="Configuration complexe ACLs sur Cisco ASA avec DMZ."
+                         data-tech="Cisco Packet Tracer, ASA Firewalls, VLANs, OSPF."
+                         data-result="Infrastructure résiliente et segmentée validée par simulation."
+                         data-skills="Network Architecture, Firewalling, Routing."
                          data-link="sae21.pkt"
-                         data-link-text="Télécharger le fichier .pkt">
-                         <h3 style="color:#9b59b6">🏢 Réseau Entreprise</h3>
-                         <p>Infrastructure complète simulée avec DMZ, Firewall ASA, et segmentation VLAN stricte.</p>
-                         <span class="read-more">Voir le détail →</span>
+                         data-link-text="[DOWNLOAD_PKT]">
+                         <h3 style="color:#2ecc71">🏢 Réseau & Firewall</h3>
+                         <p>Simulation complète : DMZ, Firewall ASA, VLANs et Services.</p>
+                         <span class="read-more">>> ACCESS_DATA</span>
                     </div>
 
                 </div>
             </div>
 
             <div class="category-section">
-                <h3 class="category-title">📡 Télécommunications</h3>
+                <h3 class="category-title">03 // Signaux</h3>
                 <div class="projects-scroller">
                     
                     <div id="projet2" class="project-card"
                          onclick="openModal(this)"
-                         data-title="Analyse Signal & Support de Trans."
-                         data-context="Comparaison entre modèles théoriques et mesures réelles sur un support de transmission physique."
-                         data-challenge="Interpréter les écarts entre la théorie mathématique et les mesures physiques parfois bruitées."
-                         data-tech="Oscilloscope, Générateur de fréquences, Octave (Matlab)."
-                         data-result="Validation du modèle théorique de l'atténuation du câble coaxial avec une marge d'erreur minime."
-                         data-skills="Métrologie, Traitement du signal, Modélisation mathématique."
+                         data-title="Analyse Signal & Transmission"
+                         data-context="Comparaison Modèle Théorique vs Réalité Physique."
+                         data-challenge="Interprétation du bruit et des pertes réelles."
+                         data-tech="Oscilloscope, Octave (Matlab), Générateur de fréquences."
+                         data-result="Validation des équations de propagation sur câble coaxial."
+                         data-skills="Métrologie, Traitement du signal, Mathématiques."
                          data-link="Zoubir_Rayan-SAE13-Rapport.pdf"
-                         data-link-text="Voir l'étude complète">
-                         <h3 style="color:#2ecc71">📉 Étude Câble Coaxial</h3>
-                         <p>Mesures d'atténuation et modélisation sous Octave pour valider la théorie de transmission.</p>
-                         <span class="read-more">Voir le détail →</span>
+                         data-link-text="[VIEW_STUDY]">
+                         <h3 style="color:#e67e22">📉 Étude Câble Coaxial</h3>
+                         <p>Mesures physiques et modélisation mathématique de l'atténuation.</p>
+                         <span class="read-more">>> ACCESS_DATA</span>
                     </div>
 
                     <div id="projet3" class="project-card"
                      onclick="openModal(this)"
                      data-title="Sensibilisation E-Réputation"
-                     data-context="Intervention pédagogique auprès de collégiens sur les dangers du numérique."
-                     data-challenge="Adapter un discours technique (RGPD, traces numériques) pour le rendre compréhensible par un jeune public."
-                     data-tech="Supports visuels, Kahoot, Pédagogie active."
-                     data-result="Séance animée avec succès, participation active des élèves via le quiz interactif."
-                     data-skills="Communication orale, Vulgarisation technique, Gestion de groupe."
+                     data-context="Intervention pédagogique (Collège)."
+                     data-challenge="Vulgarisation de concepts (RGPD, Traces) pour public jeune."
+                     data-tech="Social Engineering (Demo), OSINT (Light), Pédagogie."
+                     data-result="Prise de conscience réussie auprès des élèves."
+                     data-skills="Communication, Vulgarisation, Soft Skills."
                      data-link="E-reputation.pdf"
-                     data-link-text="Voir le support">
-                     <h3 style="color:#e67e22">🎓 Communication</h3>
-                     <p>Atelier de sensibilisation sur l'identité numérique et le RGPD pour un public jeune.</p>
-                     <span class="read-more">Voir le détail →</span>
+                     data-link-text="[VIEW_SLIDES]">
+                     <h3 style="color:#f1c40f">🎓 Social Engineering</h3>
+                     <p>Sensibilisation à l'identité numérique et risques OSINT.</p>
+                     <span class="read-more">>> ACCESS_DATA</span>
                 </div>
 
                 </div>
@@ -719,39 +607,39 @@
     </section>
     
     <section id="competences">
-        <div class="accueil-wrapper" style="max-width: 1200px; width:100%; background:rgba(20,20,20,0.9);">
-            <h2 class="title-shadow" style="font-size: 2.5em; margin-bottom: 20px;">Mes Compétences</h2>
-            <p style="margin-bottom: 40px; color: #ccc;">Une vision transverse : de l'infrastructure physique à la couche applicative.</p>
+        <div class="accueil-wrapper" style="max-width: 1200px; width:100%;">
+            <h2 style="margin-bottom: 20px; color: #fff;">_SKILL_SET</h2>
+            <p style="margin-bottom: 40px; color: var(--text-muted);">Stack technique et outils maîtrisés.</p>
             
             <div style="display: flex; flex-wrap: wrap; gap: 30px; text-align: left;">
                 
-                <div class="skill-category" style="flex: 1 1 300px; border-top: 3px solid #e74c3c;">
-                    <h3 style="color: #e74c3c; margin-bottom: 15px;">🛡️ Cybersécurité</h3>
-                    <span class="clickable-skill cyber-skill" onclick="openSkillModal(this)" data-skill-title="Sécurité Web (OWASP)" data-project-ids="projet6">Sécurité Web (OWASP)</span>
-                    <span class="clickable-skill cyber-skill">Cryptographie (Bases)</span>
-                    <span class="clickable-skill cyber-skill" onclick="openSkillModal(this)" data-skill-title="Firewalling (ASA/Netfilter)" data-project-ids="projet4">Firewalling (Cisco ASA)</span>
+                <div class="skill-category" style="flex: 1 1 300px; border-top: 1px solid var(--secondary);">
+                    <h3 style="color: var(--secondary); margin-bottom: 15px;">🛡️ OPS / Sécurité</h3>
+                    <span class="clickable-skill cyber-skill" onclick="openSkillModal(this)" data-skill-title="Sécurité Web (OWASP)" data-project-ids="projet6">Web Security (OWASP)</span>
+                    <span class="clickable-skill cyber-skill">Cryptographie</span>
+                    <span class="clickable-skill cyber-skill" onclick="openSkillModal(this)" data-skill-title="Firewalling (ASA/Netfilter)" data-project-ids="projet4">Cisco ASA / Firewalls</span>
                     <span class="clickable-skill cyber-skill">Linux Hardening</span>
-                    <span class="clickable-skill cyber-skill">Analyse de logs</span>
-                    <span class="clickable-skill cyber-skill">Gestion des identités (IAM)</span>
-                    <span class="clickable-skill cyber-skill">Sensibilisation / RGPD</span>
+                    <span class="clickable-skill cyber-skill">Log Analysis</span>
+                    <span class="clickable-skill cyber-skill">IAM / Active Directory</span>
+                    <span class="clickable-skill cyber-skill">RGPD / Compliance</span>
                 </div>
 
-                <div class="skill-category" style="flex: 1 1 300px; border-top: 3px solid #3498db;">
-                    <h3 style="color: #3498db; margin-bottom: 15px;">🌐 Réseaux & Systèmes</h3>
-                    <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Cisco Packet Tracer" data-project-ids="projet4">Cisco Packet Tracer</span>
-                    <span class="clickable-skill">Administration Linux (Debian)</span>
-                    <span class="clickable-skill">VLAN / Routage / NAT</span>
-                    <span class="clickable-skill">Wireshark / Analyse de trames</span>
-                    <span class="clickable-skill">Services : DHCP, DNS, Apache</span>
-                    <span class="clickable-skill">Virtualisation</span>
+                <div class="skill-category" style="flex: 1 1 300px; border-top: 1px solid var(--primary);">
+                    <h3 style="color: var(--primary); margin-bottom: 15px;">🌐 Infrastructure</h3>
+                    <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Cisco Packet Tracer" data-project-ids="projet4">Packet Tracer</span>
+                    <span class="clickable-skill">Linux (Debian/RedHat)</span>
+                    <span class="clickable-skill">Switching / Routing</span>
+                    <span class="clickable-skill">Wireshark</span>
+                    <span class="clickable-skill">DNS / DHCP / Apache</span>
+                    <span class="clickable-skill">Virtualisation (Proxmox)</span>
                 </div>
 
-                <div class="skill-category" style="flex: 1 1 300px; border-top: 3px solid #2ecc71;">
-                    <h3 style="color: #2ecc71; margin-bottom: 15px;">💻 Développement</h3>
-                    <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Python" data-project-ids="projet1">Python (Scripting)</span>
-                    <span class="clickable-skill">Bash / Shell</span>
-                    <span class="clickable-skill">SQL / Bases de données</span>
-                    <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="HTML/CSS/JS" data-project-ids="projet1,projet5,projet6">HTML5 / CSS3 / JS</span>
+                <div class="skill-category" style="flex: 1 1 300px; border-top: 1px solid #2ecc71;">
+                    <h3 style="color: #2ecc71; margin-bottom: 15px;">💻 Scripting & Dev</h3>
+                    <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="Python" data-project-ids="projet1">Python</span>
+                    <span class="clickable-skill">Bash Scripting</span>
+                    <span class="clickable-skill">SQL</span>
+                    <span class="clickable-skill" onclick="openSkillModal(this)" data-skill-title="HTML/CSS/JS" data-project-ids="projet1,projet5,projet6">Fullstack Web</span>
                     <span class="clickable-skill">Git / GitHub</span>
                 </div>
 
@@ -761,17 +649,17 @@
 
     <section id="contact">
         <div class="accueil-wrapper">
-            <h2 class="title-shadow" style="font-size: 2.5em; margin-bottom: 20px;">Me Contacter</h2>
-            <p>Mon profil vous intéresse pour un stage ou une collaboration ?</p>
+            <h2 style="margin-bottom: 20px; color: #fff;">_INIT_CONNECTION</h2>
+            <p>Prêt à collaborer ? Envoyez un ping.</p>
             <div style="margin-top: 40px; display: flex; flex-direction: column; gap: 20px; align-items: center;">
-                <a href="mailto:rayanzoubir6@gmail.com" class="btn" style="background: linear-gradient(135deg, #444, #222); width: 100%; max-width: 350px;">
+                <a href="mailto:rayanzoubir6@gmail.com" class="btn" style="width: 100%; max-width: 350px; border-color: #fff; color: #fff;">
                     📧 rayanzoubir6@gmail.com
                 </a>
-                <a href="https://www.linkedin.com/in/rayan-zoubir-98635a34b" target="_blank" class="btn" style="background: linear-gradient(135deg, #0077b5, #004e75); width: 100%; max-width: 350px;">
+                <a href="https://www.linkedin.com/in/rayan-zoubir-98635a34b" target="_blank" class="btn" style="width: 100%; max-width: 350px; border-color: #0077b5; color: #0077b5;">
                     🔗 LinkedIn
                 </a>
-                <a href="CV.pdf" target="_blank" class="btn" style="background: linear-gradient(135deg, var(--primary-color), #2980b9); margin-top: 15px; width: 100%; max-width: 350px;">
-                    📄 Télécharger mon CV
+                <a href="CV.pdf" target="_blank" class="btn" style="width: 100%; max-width: 350px; background: rgba(0,243,255,0.1);">
+                    📄 Download_CV.pdf
                 </a>
             </div>
         </div>
@@ -781,60 +669,60 @@
 
 <div id="projectModal" class="modal">
     <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        
         <div class="modal-header">
-            <h3 id="modal-title">Titre du Projet</h3>
+            <h3 id="modal-title">Project_Title</h3>
+            <span class="close" onclick="closeModal()">&times;</span>
         </div>
 
         <div class="modal-body">
             
             <div class="modal-section">
-                <h4>Contexte</h4>
+                <h4>// Contexte</h4>
                 <p id="modal-context">...</p>
             </div>
 
             <div class="modal-section">
-                <h4>⚠️ Challenge / Difficulté</h4>
+                <h4>// Challenge & Difficulté</h4>
                 <p id="modal-challenge">...</p>
             </div>
 
             <div class="modal-section">
-                <h4>✅ Résultat / Impact</h4>
-                <p id="modal-result">...</p>
+                <h4>// Résultat & Impact</h4>
+                <p id="modal-result" style="color: #fff;">...</p>
             </div>
             
             <div class="modal-section">
-                <h4>Réalisation Technique</h4>
-                <p id="modal-tech">...</p>
+                <h4>// Stack Technique</h4>
+                <p id="modal-tech" style="font-family: 'Fira Code', monospace; color: var(--primary);">...</p>
             </div>
 
             <div class="modal-section">
-                <h4>Compétences Clés</h4>
-                <p id="modal-skills" style="color: var(--primary-color); font-weight: bold; font-size: 1.1em;">...</p>
+                <h4>// Compétences Validées</h4>
+                <p id="modal-skills" style="font-weight: bold;">...</p>
             </div>
-        </div>
-
-        <div class="modal-footer">
-            <a href="#" id="modal-link" target="_blank" class="btn" style="margin: 0;">Voir le document associé</a>
+            
+            <div style="text-align: right; margin-top: 20px;">
+                <a href="#" id="modal-link" target="_blank" class="btn">[ OPEN_FILE ]</a>
+            </div>
         </div>
     </div>
 </div>
 
 <div id="skillModal" class="modal">
     <div class="modal-content" style="max-width: 950px;">
-        <span class="close" onclick="closeSkillModal()">&times;</span>
         <div class="modal-header">
-            <h3 id="skill-modal-title">Compétence</h3>
+            <h3 id="skill-modal-title">Skill_Name</h3>
+            <span class="close" onclick="closeSkillModal()">&times;</span>
         </div>
         <div class="modal-body" id="skill-modal-projects">
-        </div>
+            </div>
     </div>
 </div>
 
 <script>
     const navLinks = document.getElementById('nav-links');
     const hamburgerBtn = document.getElementById('hamburger-btn');
+    const btns = document.querySelectorAll('nav button');
 
     // Navigation
     function showSection(id) {
@@ -844,6 +732,12 @@
             target.classList.add('active');
             window.scrollTo(0, 0); 
         }
+        
+        // Gestion classe active menu
+        btns.forEach(btn => btn.classList.remove('active-link'));
+        // Trouver le bouton qui correspond
+        // Simple hack: on cherche le texte du bouton ou on utilise l'index
+        
         if (navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
             hamburgerBtn.classList.remove('active');
@@ -869,7 +763,7 @@
         const link = element.getAttribute('data-link');
         const linkText = element.getAttribute('data-link-text');
 
-        document.getElementById('modal-title').innerText = title;
+        document.getElementById('modal-title').innerText = "> " + title;
         document.getElementById('modal-context').innerText = context;
         document.getElementById('modal-challenge').innerText = challenge;
         document.getElementById('modal-result').innerText = result;
@@ -891,13 +785,12 @@
 
     function closeModal() {
         projectModal.style.display = "none";
-        // Si la modale compétence n'est pas ouverte, on rend le scroll.
         if(document.getElementById('skillModal').style.display !== 'block'){
             document.body.classList.remove('no-scroll');
         }
     }
 
-    // --- MODALE COMPETENCE (AVEC GRILLE ET CLONAGE) ---
+    // --- MODALE COMPETENCE (CLONAGE) ---
     const skillModal = document.getElementById('skillModal');
 
     function openSkillModal(skillElement) {
@@ -910,18 +803,17 @@
         const modalTitle = document.getElementById('skill-modal-title');
         const modalProjectsContainer = document.getElementById('skill-modal-projects');
 
-        modalTitle.innerText = "Projets liés : " + skillTitle;
+        modalTitle.innerText = "Linked_Projects :: " + skillTitle;
         modalProjectsContainer.innerHTML = '';
 
         projectIds.forEach(id => {
             const originalCard = document.getElementById(id.trim());
             if (originalCard) {
-                // On clone la carte pour l'afficher dans la modale
                 const clone = originalCard.cloneNode(true);
-                clone.removeAttribute('id'); // Evite les ID dupliqués
-                
-                // Le style CSS s'occupera de la mise en page (grille)
-                
+                clone.removeAttribute('id');
+                // Ajustements visuels pour le clone
+                clone.style.background = "#0b101a"; 
+                clone.style.borderColor = "var(--primary)";
                 modalProjectsContainer.appendChild(clone);
             }
         });
@@ -935,7 +827,7 @@
         skillModal.style.display = "none";
     }
 
-    // Fermeture si clic en dehors
+    // Clic extérieur
     window.onclick = function(event) {
         if (event.target == projectModal) closeModal();
         if (event.target == skillModal) closeSkillModal();
