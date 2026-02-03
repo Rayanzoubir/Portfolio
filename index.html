@@ -13,7 +13,7 @@
             
             --accent-cyan: #00ffd5;    
             --accent-lime: #a6ff00;    
-            --accent-orange: #ffae00; /* Ajout pour Télécoms */
+            --accent-orange: #ffae00; 
             --gradient-glow: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
             
             --text-bright: #e6f1ff;    
@@ -175,7 +175,14 @@
             margin-bottom: 30px; box-shadow: 0 0 15px rgba(166, 255, 0, 0.2);
         }
         
-        .hero-desc { font-size: 1.2em; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
+        .hero-desc { font-size: 1.2em; color: var(--text-muted); max-width: 700px; margin: 0 auto 30px; }
+
+        .manga-style {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            color: var(--text-bright);
+            opacity: 0.9;
+        }
 
         /* --- CARTES A PROPOS --- */
         .apropos-container {
@@ -365,15 +372,16 @@
                 <img src="pdp.png" alt="Zoubir Rayan">
             </div>
             
-            <span class="stage-badge">Station: Recherche de stage (10 sem.)</span>
+            <span class="stage-badge">🚀 Recherche de stage : 07 Avril au 19 Juin</span>
             
             <h1 class="hero-title">Zoubir Rayan<span style="color:var(--accent-cyan)">.</span></h1>
-            <p class="hero-desc">
-                Étudiant R&T // Futurologue des Réseaux // Explorateur Cyber. <br>
-                Je connecte le monde et sécurise ses fondations.
-            </p>
+            
+            <div class="hero-desc">
+                <p class="manga-style">Je m'appelle Zoubir Rayan. Bienvenue ! Je suis ravi de vous accueillir sur mon portfolio.</p>
+                <p class="manga-style">Vous y découvrirez mon parcours, mes projets et mes compétences en réseaux, cybersécurité et programmation. Naviguez librement pour en apprendre plus sur moi et mon univers professionnel.</p>
+            </div>
 
-            <a href="#" class="btn" onclick="showSection('projets')">Initialiser la connexion &rarr;</a>
+            <a href="#" class="btn" onclick="showSection('projets')">Explorer mes projets &rarr;</a>
         </div>
     </section>
 
@@ -420,10 +428,10 @@
             <div id="projet7" class="project-card cyber-card"
                  onclick="openModal(this)"
                  data-title="Audit & Pentest Docker"
-                 data-context="Audit Black Box d'une infrastructure Docker segmentée (Samba exposée, WebApp interne) pour identifier les chemins de compromission."
-                 data-challenge="Compromettre le réseau interne via un 'Pivot' (Tunneling) depuis une faille SambaCry (CVE-2017-7494) et escalader jusqu'à Root."
-                 data-tech="Metasploit, Nmap, Python (Scripting exploit), Bash, Tshark/Wireshark."
-                 data-result="Accès Root obtenu sur les 2 machines. Rapport de remédiation technique fourni avec correctifs (Sudo, Samba)."
+                 [cite_start]data-context="Audit Black Box d'une infrastructure Docker segmentée (Samba exposée, WebApp interne) pour identifier les chemins de compromission[cite: 338, 343]."
+                 [cite_start]data-challenge="Compromettre le réseau interne via un 'Pivot' (Tunneling) depuis une faille SambaCry (CVE-2017-7494) et escalader jusqu'à Root[cite: 415, 458]."
+                 [cite_start]data-tech="Metasploit, Nmap, Python (Scripting exploit), Bash, Tshark/Wireshark[cite: 362, 420, 501]."
+                 data-result="Accès Root obtenu sur les 2 machines. [cite_start]Rapport de remédiation technique fourni avec correctifs (Sudo, Samba)[cite: 355, 509]."
                  data-skills="Pentesting, Pivoting, Privilege Escalation, CVE Analysis."
                  data-link="Rapport-SAE34-Zoubir-Rayan-2A.pdf"
                  data-link-text="Voir le rapport de Pentest">
@@ -471,24 +479,6 @@
                  </div>
             </div>
 
-            <div id="projet5" class="project-card"
-                 onclick="openModal(this)"
-                 data-title="Portfolio V1"
-                 data-context="Création de mon hub professionnel numérique centralisé."
-                 data-challenge="Performance maximale. Zéro framework, zéro dépendance inutile. 100% code maîtrisé."
-                 data-tech="HTML5 Sémantique, CSS3 Moderne, Vanilla JS, Git & GitHub Pages."
-                 data-result="Un site ultra-rapide, responsive, et une base de code propre et maintenable."
-                 data-skills="Frontend Dev, Performance, Versionning."
-                 data-link="https://rayanzoubir.github.io/Portfolio/"
-                 data-link-text="Voir en ligne">
-                 <div class="card-header-img" style="color: var(--accent-cyan)">💼</div>
-                 <div class="card-content">
-                     <h3>Portfolio "Vanilla"</h3>
-                     <p>Développement from scratch pour une maîtrise totale des standards Web.</p>
-                     <div class="card-link">Voir les données //</div>
-                 </div>
-            </div>
-
         </div>
 
         <span class="category-label">Infrastructure & Réseaux</span>
@@ -497,10 +487,10 @@
             <div id="certif_ccna1" class="project-card"
                  onclick="openModal(this)"
                  data-title="Certification Cisco CCNA 1"
-                 data-context="Cisco Networking Academy. Validation des fondamentaux des réseaux informatiques."
-                 data-challenge="Maîtriser les bases théoriques (Modèle OSI, TCP/IP) et la configuration initiale des équipements Cisco (IOS)."
+                 [cite_start]data-context="Validation des fondamentaux des réseaux informatiques via le programme Cisco Networking Academy[cite: 548, 550]."
+                 [cite_start]data-challenge="Maîtriser les bases théoriques (Modèle OSI, TCP/IP) et la configuration initiale des équipements Cisco (IOS)[cite: 548]."
                  data-tech="Cisco IOS, Adressage IPv4/IPv6, Ethernet, CLI."
-                 data-result="Certification obtenue. Capacité à concevoir des réseaux locaux simples et sécurisés."
+                 data-result="Certification obtenue le 23 oct. 2025. [cite_start]Capacité à concevoir des réseaux locaux simples et sécurisés[cite: 551]."
                  data-skills="Network Fundamentals, IP Addressing, Basic Configuration."
                  data-link="CCNA-_Introduction_to_Networks_certificate_zrayan149-gmail-com_ef8dbfb4-c76c-4caf-8a6d-860c364185c8.pdf"
                  data-link-text="Voir le Certificat (PDF)">
@@ -515,10 +505,10 @@
             <div id="certif_ccna2" class="project-card"
                  onclick="openModal(this)"
                  data-title="Certification Cisco CCNA 2"
-                 data-context="Switching, Routing, and Wireless Essentials (SRWE). Niveau intermédiaire."
-                 data-challenge="Implémentation de technologies avancées : VLANs pour la sécurité, Spanning Tree (STP) pour la redondance et routage inter-VLAN."
+                 [cite_start]data-context="Switching, Routing, and Wireless Essentials (SRWE)[cite: 558]."
+                 [cite_start]data-challenge="Implémentation de technologies avancées : VLANs pour la sécurité, Spanning Tree (STP) pour la redondance et routage inter-VLAN[cite: 558]."
                  data-tech="VLANs, Trunking (802.1Q), STP, EtherChannel, DHCPv4, Routing, WLAN."
-                 data-result="Certification obtenue. Compétence validée en architecture LAN commutée et routée."
+                 data-result="Certification obtenue le 16 déc. 2025. [cite_start]Compétence validée en architecture LAN commutée et routée[cite: 564]."
                  data-skills="Switching, Routing, Wireless Security, VLAN Configuration."
                  data-link="CCNA-_Switching-_Routing-_and_Wireless_Essentials_certificate_zrayan149-gmail-com_b904b47c-023b-44ac-92e0-d838763f75e8.pdf"
                  data-link-text="Voir le Certificat (PDF)">
@@ -556,10 +546,10 @@
             <div id="projet_sae31" class="project-card"
                  onclick="openModal(this)"
                  data-title="Transmission TV Numérique (SAÉ 31)"
-                 data-context="Étude complète de la chaîne de transmission TV numérique : du codage à la réception par satellite (DVB-S) et terrestre (DVB-T)."
-                 data-challenge="Comprendre et mesurer les modulations complexes (QPSK, 64-QAM) et valider la qualité du signal via l'analyse spectrale et les diagrammes de constellation."
-                 data-tech="Analyseur de Spectre, DVB-S/T, QPSK/64-QAM, Codage Canal (Viterbi/RS), Mesures BER/MER."
-                 data-result="Maîtrise des outils de mesure, validation de la réception de multiplex TNT et diagnostic de qualité de signal."
+                 [cite_start]data-context="Étude complète de la chaîne de transmission TV numérique : réception par satellite (DVB-S) et terrestre (DVB-T)[cite: 6, 9, 110]."
+                 [cite_start]data-challenge="Analyser les modulations complexes (QPSK, 64-QAM) et valider la qualité du signal via l'analyse spectrale et les diagrammes de constellation[cite: 11, 113, 225]."
+                 [cite_start]data-tech="Analyseur de Spectre (Televes H30), DVB-S/T, 64-QAM, Mesures BER/MER[cite: 82, 106, 170, 203]."
+                 [cite_start]data-result="Validation de la réception de multiplex TNT et diagnostic de qualité (MER > 30 dB)[cite: 203, 207, 255]."
                  data-skills="Traitement du Signal, Télécommunications, Analyse Spectrale, Normes DVB."
                  data-link="CR_ALABRI_ZOUBIR_GHAZEL_AYED_BIN-FARIHIN.docx"
                  data-link-text="Lire le Compte-Rendu">
@@ -589,24 +579,6 @@
                  </div>
             </div>
 
-            <div id="projet3" class="project-card"
-             onclick="openModal(this)"
-             data-title="Sensibilisation E-Réputation"
-             data-context="Mission : Intervention en milieu scolaire pour éduquer sur les risques numériques."
-             data-challenge="Vulgariser des concepts complexes (OSINT, RGPD, méta-données) pour capter l'attention d'ados."
-             data-tech="Pédagogie active, Gamification (Kahoot), Communication."
-             data-result="Impact fort : prise de conscience immédiate des élèves sur leurs traces numériques."
-             data-skills="Soft Skills, Communication, Pédagogie."
-             data-link="E-reputation.pdf"
-             data-link-text="Voir le support de conf">
-             <div class="card-header-img" style="color: #ffae00;">🎓</div>
-             <div class="card-content">
-                 <h3>Pédagogie Cyber</h3>
-                 <p>Sensibilisation à l'identité numérique et aux risques OSINT.</p>
-                 <div class="card-link">Voir les données //</div>
-             </div>
-        </div>
-
         </div>
     </section>
     
@@ -624,10 +596,8 @@
                     <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Metasploit / Pentesting" data-project-ids="projet7">Metasploit / Pentesting</span>
                     <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Pivoting Réseau" data-project-ids="projet7">Network Pivoting</span>
                     <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Sécurité Web" data-project-ids="projet6,projet7">OWASP / Web Sec</span>
-                    <span class="skill-tag cyber">Cryptographie</span>
                     <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Firewalling" data-project-ids="projet4">Cisco ASA / Netfilter</span>
                     <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Privilege Escalation" data-project-ids="projet7">Linux PrivEsc</span>
-                    <span class="skill-tag cyber">Log Analysis (SIEM)</span>
                 </div>
             </div>
 
@@ -638,8 +608,6 @@
                     <span class="skill-tag net" onclick="openSkillModal(this)" data-skill-title="Fundamentals (OSI/TCP)" data-project-ids="certif_ccna1,projet4">Network Fundamentals</span>
                     <span class="skill-tag net" onclick="openSkillModal(this)" data-skill-title="VLAN / STP / Routing" data-project-ids="certif_ccna2,projet4">VLAN / Switching / Routing</span>
                     <span class="skill-tag net">Linux Admin (Debian)</span>
-                    <span class="skill-tag net">Wireshark (Analyse trames)</span>
-                    <span class="skill-tag net">Services (DNS/DHCP/Web)</span>
                     <span class="skill-tag net" onclick="openSkillModal(this)" data-skill-title="Docker" data-project-ids="projet7">Docker / Conteneurs</span>
                 </div>
             </div>
@@ -651,18 +619,6 @@
                     <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Modulation (QAM/QPSK)" data-project-ids="projet_sae31">Modulation (QAM/QPSK)</span>
                     <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Analyse Spectrale" data-project-ids="projet_sae31,projet2">Analyse Spectrale</span>
                     <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Normes DVB (T/S)" data-project-ids="projet_sae31">Normes DVB (T/S)</span>
-                    <span class="skill-tag">Transmission Hertzienne</span>
-                </div>
-            </div>
-
-            <div class="skill-group">
-                <h3 style="color: var(--text-bright);">💻 Développement</h3>
-                <div class="tag-cloud">
-                    <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Python" data-project-ids="projet1,projet7">Python Scripting</span>
-                    <span class="skill-tag">Bash / Shell</span>
-                    <span class="skill-tag">SQL / MariaDB</span>
-                    <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Web Stack" data-project-ids="projet1,projet5,projet6">HTML5 / CSS3 / JS</span>
-                    <span class="skill-tag">Git Flow</span>
                 </div>
             </div>
 
@@ -748,20 +704,17 @@
 <script>
     const navLinks = document.getElementById('nav-links');
     const hamburgerBtn = document.getElementById('hamburger-btn');
-    const btns = document.querySelectorAll('nav button');
 
     // Helper affichage modale avec animation
     function toggleModal(modalID, show) {
         const modal = document.getElementById(modalID);
         if(show) {
             modal.style.display = 'block';
-            // Force le reflow pour l'animation CSS
             void modal.offsetWidth;
             modal.classList.add('show');
             document.body.classList.add('no-scroll');
         } else {
             modal.classList.remove('show');
-            // Attendre la fin de la transition CSS (0.3s) avant de cacher
             setTimeout(() => {
                 if(!modal.classList.contains('show')) modal.style.display = 'none';
             }, 300);
@@ -781,7 +734,6 @@
             target.classList.add('active');
             window.scrollTo(0, 0); 
         }
-        
         if (navLinks.classList.contains('active')) {
             navLinks.classList.remove('active');
             hamburgerBtn.classList.remove('active');
@@ -831,7 +783,6 @@
     function openSkillModal(skillElement) {
         const skillTitle = skillElement.getAttribute('data-skill-title');
         const projectIdsRaw = skillElement.getAttribute('data-project-ids');
-        
         if (!projectIdsRaw) return;
 
         const projectIds = projectIdsRaw.split(',');
@@ -846,17 +797,14 @@
             if (originalCard) {
                 const clone = originalCard.cloneNode(true);
                 clone.removeAttribute('id');
-                // Nettoyage visuel pour la modale
                 clone.style.width = "280px";
                 clone.style.minWidth = "280px";
-                // On enlève l'effet de survol complexe dans la modale pour rester propre
                 clone.style.transform = "none";
                 clone.style.boxShadow = "none";
                 clone.style.background = "rgba(0,0,0,0.3)";
                 modalProjectsContainer.appendChild(clone);
             }
         });
-        
         toggleModal('skillModal', true);
     }
 
@@ -864,7 +812,6 @@
         toggleModal('skillModal', false);
     }
 
-    // Close on outside click
     window.onclick = function(event) {
         const pModal = document.getElementById('projectModal');
         const sModal = document.getElementById('skillModal');
