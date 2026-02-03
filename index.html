@@ -8,16 +8,15 @@
     <style>
         :root {
             /* --- PALETTE "BIOLUMINESCENCE ABYSSALE" --- */
-            --bg-abyss: #020c1b;       /* Bleu nuit très profond */
-            --bg-panel: rgba(10, 25, 47, 0.75); /* Panneaux de verre sombre */
+            --bg-abyss: #020c1b;       
+            --bg-panel: rgba(10, 25, 47, 0.75); 
             
-            --accent-cyan: #00ffd5;    /* Cyan électrique bioluminescent */
-            --accent-lime: #a6ff00;    /* Vert acide organique */
-            /* Création d'un dégradé signature pour les éléments clés */
+            --accent-cyan: #00ffd5;    
+            --accent-lime: #a6ff00;    
             --gradient-glow: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
             
-            --text-bright: #e6f1ff;    /* Blanc cassé pour le contraste */
-            --text-muted: #8892b0;     /* Bleu gris pour le texte secondaire */
+            --text-bright: #e6f1ff;    
+            --text-muted: #8892b0;     
             
             --nav-height: 70px;
             --border-glow: 1px solid rgba(0, 255, 213, 0.15);
@@ -45,15 +44,13 @@
             flex-direction: column;
             min-height: 100vh;
             position: relative;
-            /* Fond texturé subtil */
-            background-image: url('fond.jpeg'); /* Ton image en superposition très sombre */
+            background-image: url('fond.jpeg'); 
             background-blend-mode: overlay;
             background-size: cover;
             background-attachment: fixed;
         }
 
-        /* --- FOND ANIME "AURORA NUMÉRIQUE" --- */
-        /* Crée des nappes de lumière mouvantes en arrière-plan */
+        /* --- FOND ANIME --- */
         body::before, body::after {
             content: ''; position: fixed; width: 60vw; height: 60vh; border-radius: 50%;
             filter: blur(120px); opacity: 0.15; z-index: -1; animation: moveOrb 15s infinite alternate ease-in-out;
@@ -70,7 +67,7 @@
             letter-spacing: 0.05em;
         }
 
-        /* --- NAVIGATION "FLOTTANTE" --- */
+        /* --- NAVIGATION --- */
         nav {
             background: rgba(2, 12, 27, 0.85);
             backdrop-filter: blur(15px);
@@ -98,7 +95,6 @@
             transition: 0.3s; overflow: hidden;
         }
         
-        /* Effet de soulignement lumineux au survol */
         nav button::after {
             content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 2px;
             background: var(--gradient-glow); transform: translateX(-101%); transition: 0.3s ease-in-out;
@@ -137,12 +133,12 @@
         section.active { display: block; animation: fadeUp 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: translateY(0); } }
 
-        /* --- BOUTON "ÉNERGIE" --- */
+        /* --- BOUTON --- */
         .btn {
             background: var(--gradient-glow); color: var(--bg-abyss);
             border: none; padding: 14px 35px; font-weight: 700; text-decoration: none;
             display: inline-block; margin-top: 25px; position: relative; z-index: 1;
-            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%); /* Forme angulaire tech */
+            clip-path: polygon(10% 0, 100% 0, 100% 70%, 90% 100%, 0 100%, 0 30%);
             transition: 0.3s;
         }
         .btn::before {
@@ -163,13 +159,11 @@
         }
         .photo-box img {
             width: 100%; height: 100%; object-fit: cover;
-            /* Double bordure lumineuse */
             box-shadow: 0 0 0 5px var(--bg-abyss), 0 0 0 8px var(--accent-cyan), 0 0 30px var(--accent-cyan);
         }
 
         .hero-title {
             font-size: 3.5em; line-height: 1.1; margin-bottom: 20px;
-            /* Texte dégradé */
             background: var(--gradient-glow); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         
@@ -182,7 +176,7 @@
         
         .hero-desc { font-size: 1.2em; color: var(--text-muted); max-width: 600px; margin: 0 auto 30px; }
 
-        /* --- CARTES (Look "Verre Dépoli") --- */
+        /* --- CARTES A PROPOS --- */
         .apropos-container {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 50px;
         }
@@ -193,7 +187,6 @@
             transition: 0.4s;
         }
         
-        /* Effet de scan lumineux au survol */
         .glass-card::after {
             content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
             background: linear-gradient(90deg, transparent, rgba(0, 255, 213, 0.1), transparent);
@@ -206,7 +199,6 @@
         
         .card-icon {
             font-size: 2.5em; margin-bottom: 20px; display: inline-block;
-            /* Ombre portée colorée sous l'icône */
             filter: drop-shadow(0 0 10px currentColor);
         }
 
@@ -223,9 +215,8 @@
         .category-label.cyber::before { background: var(--accent-cyan); }
 
         .projects-scroller {
-            display: flex; overflow-x: auto; gap: 30px; padding: 20px 10px 40px; /* Padding pour l'ombre */
+            display: flex; overflow-x: auto; gap: 30px; padding: 20px 10px 40px; 
         }
-        /* Scrollbar fine et lumineuse */
         .projects-scroller::-webkit-scrollbar { height: 4px; }
         .projects-scroller::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
         .projects-scroller::-webkit-scrollbar-thumb { background: var(--accent-cyan); }
@@ -259,13 +250,12 @@
         }
         .project-card:hover .card-link { gap: 15px; text-shadow: 0 0 10px var(--accent-cyan); }
 
-        /* --- COMPÉTENCES (Style "Circuit Board") --- */
+        /* --- COMPÉTENCES --- */
         .skills-grid {
             display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px;
         }
         .skill-group {
             background: var(--bg-panel); padding: 30px; border: var(--border-glow);
-            /* Lignes de circuit décoratives */
             background-image: 
                 linear-gradient(rgba(0, 255, 213, 0.05) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 255, 213, 0.05) 1px, transparent 1px);
@@ -280,7 +270,7 @@
             cursor: pointer; transition: 0.3s; border: 1px solid transparent;
             position: relative; z-index: 1; overflow: hidden;
         }
-        /* Effet de remplissage au survol */
+        
         .skill-tag::before {
             content: ''; position: absolute; top: 0; left: 0; width: 0; height: 100%;
             background: var(--gradient-glow); z-index: -1; transition: 0.3s ease;
@@ -426,6 +416,24 @@
         <span class="category-label cyber">Cybersécurité & Dev</span>
         <div class="projects-scroller">
             
+            <div id="projet7" class="project-card cyber-card"
+                 onclick="openModal(this)"
+                 data-title="Audit & Pentest Docker"
+                 data-context="Audit Black Box d'une infrastructure Docker segmentée (Samba exposée, WebApp interne) pour identifier les chemins de compromission."
+                 data-challenge="Compromettre le réseau interne via un 'Pivot' (Tunneling) depuis une faille SambaCry (CVE-2017-7494) et escalader jusqu'à Root."
+                 data-tech="Metasploit, Nmap, Python (Scripting exploit), Bash, Tshark/Wireshark."
+                 data-result="Accès Root obtenu sur les 2 machines. Rapport de remédiation technique fourni avec correctifs (Sudo, Samba)."
+                 data-skills="Pentesting, Pivoting, Privilege Escalation, CVE Analysis."
+                 data-link="Rapport-SAE34-Zoubir-Rayan-2A.pdf"
+                 data-link-text="Voir le rapport de Pentest">
+                 <div class="card-header-img" style="color: #ff0055;">💀</div>
+                 <div class="card-content">
+                     <h3>Audit & Pentest</h3>
+                     <p>Exploitation SambaCry, Pivot réseau et Élévation de privilèges (Root).</p>
+                     <div class="card-link">Voir les données //</div>
+                 </div>
+            </div>
+
             <div id="projet6" class="project-card cyber-card"
                  onclick="openModal(this)"
                  data-title="Sécurisation Web (PHOTO_ATB)"
@@ -558,12 +566,13 @@
             <div class="skill-group" style="border-color: var(--accent-lime);">
                 <h3 style="color: var(--accent-lime);">🛡️ Cybersécurité</h3>
                 <div class="tag-cloud">
-                    <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Sécurité Web" data-project-ids="projet6">OWASP / Web Sec</span>
+                    <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Metasploit / Pentesting" data-project-ids="projet7">Metasploit / Pentesting</span>
+                    <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Pivoting Réseau" data-project-ids="projet7">Network Pivoting</span>
+                    <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Sécurité Web" data-project-ids="projet6,projet7">OWASP / Web Sec</span>
                     <span class="skill-tag cyber">Cryptographie</span>
                     <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Firewalling" data-project-ids="projet4">Cisco ASA / Netfilter</span>
-                    <span class="skill-tag cyber">Linux Hardening</span>
-                    <span class="skill-tag cyber">Log Analysis (SIEM basics)</span>
-                    <span class="skill-tag cyber">Compliance RGPD</span>
+                    <span class="skill-tag cyber" onclick="openSkillModal(this)" data-skill-title="Privilege Escalation" data-project-ids="projet7">Linux PrivEsc</span>
+                    <span class="skill-tag cyber">Log Analysis (SIEM)</span>
                 </div>
             </div>
 
@@ -575,14 +584,14 @@
                     <span class="skill-tag net">VLAN / OSPF / STP</span>
                     <span class="skill-tag net">Wireshark (Analyse trames)</span>
                     <span class="skill-tag net">Services (DNS/DHCP/Web)</span>
-                    <span class="skill-tag net">Virtualisation (Proxmox)</span>
+                    <span class="skill-tag net" onclick="openSkillModal(this)" data-skill-title="Docker" data-project-ids="projet7">Docker / Conteneurs</span>
                 </div>
             </div>
 
             <div class="skill-group">
                 <h3 style="color: var(--text-bright);">💻 Développement</h3>
                 <div class="tag-cloud">
-                    <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Python" data-project-ids="projet1">Python Scripting</span>
+                    <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Python" data-project-ids="projet1,projet7">Python Scripting</span>
                     <span class="skill-tag">Bash / Shell</span>
                     <span class="skill-tag">SQL / MariaDB</span>
                     <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Web Stack" data-project-ids="projet1,projet5,projet6">HTML5 / CSS3 / JS</span>
