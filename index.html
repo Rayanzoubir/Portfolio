@@ -13,6 +13,7 @@
             
             --accent-cyan: #00ffd5;    
             --accent-lime: #a6ff00;    
+            --accent-orange: #ffae00; /* Ajout pour Télécoms */
             --gradient-glow: linear-gradient(135deg, var(--accent-cyan), var(--accent-lime));
             
             --text-bright: #e6f1ff;    
@@ -552,6 +553,24 @@
         <span class="category-label">Télécommunications</span>
         <div class="projects-scroller">
             
+            <div id="projet_sae31" class="project-card"
+                 onclick="openModal(this)"
+                 data-title="Transmission TV Numérique (SAÉ 31)"
+                 data-context="Étude complète de la chaîne de transmission TV numérique : du codage à la réception par satellite (DVB-S) et terrestre (DVB-T)."
+                 data-challenge="Comprendre et mesurer les modulations complexes (QPSK, 64-QAM) et valider la qualité du signal via l'analyse spectrale et les diagrammes de constellation."
+                 data-tech="Analyseur de Spectre, DVB-S/T, QPSK/64-QAM, Codage Canal (Viterbi/RS), Mesures BER/MER."
+                 data-result="Maîtrise des outils de mesure, validation de la réception de multiplex TNT et diagnostic de qualité de signal."
+                 data-skills="Traitement du Signal, Télécommunications, Analyse Spectrale, Normes DVB."
+                 data-link="CR_ALABRI_ZOUBIR_GHAZEL_AYED_BIN-FARIHIN.docx"
+                 data-link-text="Lire le Compte-Rendu">
+                 <div class="card-header-img" style="color: #ffae00;">📡</div>
+                 <div class="card-content">
+                     <h3>Transmission TV</h3>
+                     <p>Analyse spectrale DVB-S/T, mesures MER/BER et constellations QAM.</p>
+                     <div class="card-link">Voir les données //</div>
+                 </div>
+            </div>
+
             <div id="projet2" class="project-card"
                  onclick="openModal(this)"
                  data-title="Analyse de Signal"
@@ -622,6 +641,17 @@
                     <span class="skill-tag net">Wireshark (Analyse trames)</span>
                     <span class="skill-tag net">Services (DNS/DHCP/Web)</span>
                     <span class="skill-tag net" onclick="openSkillModal(this)" data-skill-title="Docker" data-project-ids="projet7">Docker / Conteneurs</span>
+                </div>
+            </div>
+
+            <div class="skill-group" style="border-color: var(--accent-orange);">
+                <h3 style="color: var(--accent-orange);">📡 Télécommunications</h3>
+                <div class="tag-cloud">
+                    <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Traitement du Signal" data-project-ids="projet2,projet_sae31">Traitement du Signal</span>
+                    <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Modulation (QAM/QPSK)" data-project-ids="projet_sae31">Modulation (QAM/QPSK)</span>
+                    <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Analyse Spectrale" data-project-ids="projet_sae31,projet2">Analyse Spectrale</span>
+                    <span class="skill-tag" onclick="openSkillModal(this)" data-skill-title="Normes DVB (T/S)" data-project-ids="projet_sae31">Normes DVB (T/S)</span>
+                    <span class="skill-tag">Transmission Hertzienne</span>
                 </div>
             </div>
 
